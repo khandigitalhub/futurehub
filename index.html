@@ -15,15 +15,15 @@
   <!-- HEADER -->
   <header class="header">
     <div class="header-content">
-      <div class="logo-area">
+      <a href="#" class="logo-area">
         <div class="logo-box">
           <span class="logo-f">F</span>
         </div>
         <div class="logo-text">
-          <h1>Future<span>Hub</span></h1>
-          <p>Earn • Learn • Grow</p>
+          <span class="logo-name">Future<span class="blue">Hub</span></span>
+          <span class="logo-tagline">Earn • Learn • Grow</span>
         </div>
-      </div>
+      </a>
 
       <div class="search-box">
         <i class="fa-solid fa-magnifying-glass"></i>
@@ -31,21 +31,21 @@
       </div>
 
       <div class="header-actions">
-        <div class="action-item support-btn">
+        <a href="#" class="action-item support-item">
           <i class="fa-regular fa-comment-dots"></i>
           <span>Support</span>
-        </div>
-        <div class="action-item notification-btn">
+        </a>
+        <a href="#" class="action-item notification-item">
           <i class="fa-regular fa-bell"></i>
-          <span class="badge">3</span>
-        </div>
-        <div class="profile-dropdown">
+          <span class="notif-badge">3</span>
+        </a>
+        <div class="profile-area">
           <img src="https://i.pravatar.cc/150?img=12" alt="User Avatar" class="avatar">
-          <div class="profile-info">
+          <div class="profile-text">
             <span class="greeting">Hi, Rashed</span>
-            <span class="premium-badge">Premium</span>
+            <span class="premium">Premium</span>
           </div>
-          <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+          <i class="fa-solid fa-chevron-down arrow"></i>
         </div>
       </div>
     </div>
@@ -53,62 +53,72 @@
 
   <!-- HERO BANNER -->
   <section class="hero-section">
-    <div class="hero-slider">
-      <button class="slider-arrow prev" aria-label="Previous">
+    <div class="hero-wrapper">
+      <button class="hero-arrow prev" aria-label="Previous slide">
         <i class="fa-solid fa-chevron-left"></i>
       </button>
 
       <div class="hero-banner">
         <div class="hero-content">
-          <span class="hero-label">All-in-One Platform</span>
-          <h2 class="hero-title">Earn, Learn & Grow<br>Your Future</h2>
+          <span class="hero-subtitle">All-in-One Platform</span>
+          <h1 class="hero-title">Earn, Learn & Grow<br>Your Future</h1>
           <p class="hero-desc">Jobs, Freelance, Education, Marketplace,<br>Matrimony & AI Assistance — All in One Place!</p>
-          <a href="#" class="hero-cta">
+          <a href="#" class="hero-btn">
             Explore Now <i class="fa-solid fa-arrow-right"></i>
           </a>
         </div>
 
         <div class="hero-visual">
-          <div class="floating-icon icon-1">
-            <img src="https://cdn-icons-png.flaticon.com/128/2436/2436874.png" alt="Books">
+          <!-- Floating 3D Icons -->
+          <div class="float-icon icon-books">
+            <img src="https://cdn-icons-png.flaticon.com/128/2436/2436874.png" alt="">
           </div>
-          <div class="floating-icon icon-2">
-            <img src="https://cdn-icons-png.flaticon.com/128/10307/10307932.png" alt="Briefcase">
+          <div class="float-icon icon-briefcase">
+            <img src="https://cdn-icons-png.flaticon.com/128/10307/10307932.png" alt="">
           </div>
-          <div class="floating-icon icon-3">
-            <img src="https://cdn-icons-png.flaticon.com/128/4290/4290854.png" alt="Cart">
+          <div class="float-icon icon-cart">
+            <img src="https://cdn-icons-png.flaticon.com/128/4290/4290854.png" alt="">
           </div>
-          <div class="floating-icon icon-4">
-            <img src="https://cdn-icons-png.flaticon.com/128/14788/14788752.png" alt="Heart">
+          <div class="float-icon icon-heart">
+            <img src="https://cdn-icons-png.flaticon.com/128/14788/14788752.png" alt="">
           </div>
-          <div class="device-mockup">
-            <div class="device-screen">
-              <div class="screen-header">
-                <span class="screen-logo">FutureHub</span>
-                <span class="screen-text">Dashboard</span>
-              </div>
-              <div class="screen-content">
-                <div class="screen-chart"></div>
-                <div class="screen-bars">
-                  <div class="bar bar-1"></div>
-                  <div class="bar bar-2"></div>
-                  <div class="bar bar-3"></div>
+
+          <!-- Device Mockup -->
+          <div class="device-group">
+            <div class="laptop">
+              <div class="laptop-screen">
+                <div class="screen-nav">
+                  <div class="nav-logo">
+                    <span class="f-icon">F</span>
+                    <span>FutureHub</span>
+                  </div>
+                  <span class="nav-text">Dashboard</span>
+                </div>
+                <div class="screen-body">
+                  <div class="donut-chart">
+                    <div class="donut-hole"></div>
+                  </div>
+                  <div class="bar-chart">
+                    <div class="bar b1"></div>
+                    <div class="bar b2"></div>
+                    <div class="bar b3"></div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="tablet-device">
+            <div class="tablet">
               <div class="tablet-screen"></div>
             </div>
           </div>
         </div>
       </div>
 
-      <button class="slider-arrow next" aria-label="Next">
+      <button class="hero-arrow next" aria-label="Next slide">
         <i class="fa-solid fa-chevron-right"></i>
       </button>
     </div>
 
-    <div class="slider-dots">
+    <div class="hero-dots">
       <span class="dot active"></span>
       <span class="dot"></span>
       <span class="dot"></span>
@@ -129,82 +139,53 @@
   <!-- MENU GRID -->
   <section class="menu-section">
     <div class="menu-grid">
-      <a href="#" class="menu-card" data-color="yellow">
-        <div class="menu-icon">
-          <img src="https://cdn-icons-png.flaticon.com/128/2489/2489756.png" alt="Money Bag">
-        </div>
+      <a href="#" class="menu-card yellow">
+        <div class="card-icon"><img src="https://cdn-icons-png.flaticon.com/128/2489/2489756.png" alt=""></div>
         <h3>Earn Center</h3>
         <p>Find ways to earn online</p>
       </a>
-
-      <a href="#" class="menu-card" data-color="blue">
-        <div class="menu-icon">
-          <img src="https://cdn-icons-png.flaticon.com/128/2436/2436874.png" alt="Books">
-        </div>
+      <a href="#" class="menu-card blue">
+        <div class="card-icon"><img src="https://cdn-icons-png.flaticon.com/128/2436/2436874.png" alt=""></div>
         <h3>Learn Center</h3>
         <p>Learn new skills for free</p>
       </a>
-
-      <a href="#" class="menu-card" data-color="brown">
-        <div class="menu-icon">
-          <img src="https://cdn-icons-png.flaticon.com/128/3281/3281289.png" alt="Briefcase">
-        </div>
+      <a href="#" class="menu-card brown">
+        <div class="card-icon"><img src="https://cdn-icons-png.flaticon.com/128/3281/3281289.png" alt=""></div>
         <h3>Career Center</h3>
         <p>Find your dream career</p>
       </a>
-
-      <a href="#" class="menu-card" data-color="gray">
-        <div class="menu-icon">
-          <img src="https://cdn-icons-png.flaticon.com/128/909/909212.png" alt="CV">
-        </div>
+      <a href="#" class="menu-card gray">
+        <div class="card-icon"><img src="https://cdn-icons-png.flaticon.com/128/909/909212.png" alt=""></div>
         <h3>CV Center</h3>
         <p>Create professional CV</p>
       </a>
-
-      <a href="#" class="menu-card" data-color="orange">
-        <div class="menu-icon">
-          <img src="https://cdn-icons-png.flaticon.com/128/4290/4290854.png" alt="Cart">
-        </div>
+      <a href="#" class="menu-card orange">
+        <div class="card-icon"><img src="https://cdn-icons-png.flaticon.com/128/4290/4290854.png" alt=""></div>
         <h3>Marketplace</h3>
         <p>Buy & sell products easily</p>
       </a>
-
-      <a href="#" class="menu-card" data-color="teal">
-        <div class="menu-icon">
-          <img src="https://cdn-icons-png.flaticon.com/128/3474/3474360.png" alt="Laptop">
-        </div>
+      <a href="#" class="menu-card teal">
+        <div class="card-icon"><img src="https://cdn-icons-png.flaticon.com/128/3474/3474360.png" alt=""></div>
         <h3>Fiverr Work</h3>
         <p>Find & offer freelance services</p>
       </a>
-
-      <a href="#" class="menu-card" data-color="red">
-        <div class="menu-icon">
-          <img src="https://cdn-icons-png.flaticon.com/128/14788/14788752.png" alt="Heart">
-        </div>
+      <a href="#" class="menu-card red">
+        <div class="card-icon"><img src="https://cdn-icons-png.flaticon.com/128/14788/14788752.png" alt=""></div>
         <h3>Matrimony</h3>
         <p>Find your life partner</p>
       </a>
-
-      <a href="#" class="menu-card" data-color="purple">
-        <div class="menu-icon">
-          <img src="https://cdn-icons-png.flaticon.com/128/8637/8637099.png" alt="AI Robot">
-        </div>
+      <a href="#" class="menu-card purple">
+        <div class="card-icon"><img src="https://cdn-icons-png.flaticon.com/128/8637/8637099.png" alt=""></div>
         <h3>AI Center</h3>
         <p>AI tools for your daily life</p>
       </a>
-
-      <a href="#" class="menu-card" data-color="lightblue">
-        <div class="menu-icon">
-          <img src="https://cdn-icons-png.flaticon.com/128/1077/1077114.png" alt="User">
-        </div>
+      <a href="#" class="menu-card lightblue">
+        <div class="card-icon"><img src="https://cdn-icons-png.flaticon.com/128/1077/1077114.png" alt=""></div>
         <h3>My Account</h3>
         <p>Manage your profile & settings</p>
       </a>
-
-      <a href="#" class="menu-card" data-color="darkgray">
-        <div class="menu-icon">
-          <img src="https://cdn-icons-png.flaticon.com/128/9131/9131529.png" alt="Grid">
-        </div>
+      <a href="#" class="menu-card darkgray">
+        <div class="card-icon"><img src="https://cdn-icons-png.flaticon.com/128/9131/9131529.png" alt=""></div>
         <h3>More</h3>
         <p>Explore more features</p>
       </a>
@@ -213,52 +194,42 @@
 
   <!-- STATS SECTION -->
   <section class="stats-section">
-    <div class="stats-container">
+    <div class="stats-row">
       <div class="stat-item">
-        <div class="stat-icon">
-          <i class="fa-regular fa-user"></i>
-        </div>
-        <div class="stat-content">
+        <div class="stat-icon"><i class="fa-regular fa-user"></i></div>
+        <div class="stat-info">
           <span class="stat-label">Total Users</span>
           <span class="stat-value">125K+</span>
         </div>
       </div>
       <div class="stat-divider"></div>
       <div class="stat-item">
-        <div class="stat-icon briefcase">
-          <i class="fa-solid fa-briefcase"></i>
-        </div>
-        <div class="stat-content">
+        <div class="stat-icon orange"><i class="fa-solid fa-briefcase"></i></div>
+        <div class="stat-info">
           <span class="stat-label">Active Jobs</span>
           <span class="stat-value">8,250+</span>
         </div>
       </div>
       <div class="stat-divider"></div>
       <div class="stat-item">
-        <div class="stat-icon">
-          <i class="fa-solid fa-user-tie"></i>
-        </div>
-        <div class="stat-content">
+        <div class="stat-icon blue"><i class="fa-solid fa-user-tie"></i></div>
+        <div class="stat-info">
           <span class="stat-label">Freelancers</span>
           <span class="stat-value">15K+</span>
         </div>
       </div>
       <div class="stat-divider"></div>
       <div class="stat-item">
-        <div class="stat-icon products">
-          <i class="fa-solid fa-box-open"></i>
-        </div>
-        <div class="stat-content">
+        <div class="stat-icon pink"><i class="fa-solid fa-box-open"></i></div>
+        <div class="stat-info">
           <span class="stat-label">Products</span>
           <span class="stat-value">12K+</span>
         </div>
       </div>
       <div class="stat-divider"></div>
       <div class="stat-item">
-        <div class="stat-icon courses">
-          <i class="fa-solid fa-graduation-cap"></i>
-        </div>
-        <div class="stat-content">
+        <div class="stat-icon green"><i class="fa-solid fa-graduation-cap"></i></div>
+        <div class="stat-info">
           <span class="stat-label">Courses</span>
           <span class="stat-value">3,500+</span>
         </div>
@@ -268,79 +239,73 @@
 
   <!-- FEATURED SECTIONS -->
   <section class="featured-section">
-    <div class="featured-scroll">
+    <div class="featured-row">
       <!-- Featured Jobs -->
       <div class="featured-card">
-        <div class="featured-header">
-          <h3><span class="header-emoji">🔥</span> Featured Jobs</h3>
-          <a href="#" class="view-all">View All</a>
+        <div class="card-header">
+          <h3><span class="emoji">🔥</span> Featured Jobs</h3>
+          <a href="#" class="view-link">View All</a>
         </div>
-        <div class="featured-list">
-          <div class="featured-item">
-            <div class="item-icon blue">
-              <i class="fa-solid fa-desktop"></i>
-            </div>
-            <div class="item-details">
+        <div class="card-list">
+          <div class="list-item">
+            <div class="item-icon blue"><i class="fa-solid fa-desktop"></i></div>
+            <div class="item-info">
               <h4>UI/UX Designer</h4>
-              <p>Remote</p>
+              <span>Remote</span>
             </div>
-            <span class="item-price green">$500 - $800</span>
+            <span class="item-salary">$500 - $800</span>
           </div>
-          <div class="featured-item">
-            <div class="item-icon blue">
-              <i class="fa-solid fa-code"></i>
-            </div>
-            <div class="item-details">
+          <div class="list-item">
+            <div class="item-icon blue"><i class="fa-solid fa-code"></i></div>
+            <div class="item-info">
               <h4>Full Stack Developer</h4>
-              <p>Dhaka, Bangladesh</p>
+              <span>Dhaka, Bangladesh</span>
             </div>
-            <span class="item-price green">$600 - $1200</span>
+            <span class="item-salary">$600 - $1200</span>
           </div>
-          <div class="featured-item">
-            <div class="item-icon blue">
-              <i class="fa-solid fa-chart-line"></i>
-            </div>
-            <div class="item-details">
+          <div class="list-item">
+            <div class="item-icon blue"><i class="fa-solid fa-chart-line"></i></div>
+            <div class="item-info">
               <h4>Digital Marketer</h4>
-              <p>Remote</p>
+              <span>Remote</span>
             </div>
-            <span class="item-price green">$300 - $600</span>
+            <span class="item-salary">$300 - $600</span>
           </div>
         </div>
       </div>
 
       <!-- Popular Products -->
       <div class="featured-card">
-        <div class="featured-header">
-          <h3><span class="header-emoji">🛒</span> Popular Products</h3>
-          <a href="#" class="view-all">View All</a>
+        <div class="card-header">
+          <h3><span class="emoji">🛒</span> Popular Products</h3>
+          <a href="#" class="view-link">View All</a>
         </div>
-        <div class="featured-list">
-          <div class="featured-item">
+        <div class="card-list">
+          <div class="list-item">
             <div class="item-thumb">
-              <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=100&h=100&fit=crop" alt="iPhone">
+              <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=80&h=80&fit=crop" alt="iPhone">
             </div>
-            <div class="item-details">
+            <div class="item-info">
               <h4>iPhone 15 Pro Max</h4>
-              <span class="product-price">$1,099</span>
+              <span class="price">$1,099</span>
             </div>
           </div>
-          <div class="featured-item">
+          <div class="list-item">
             <div class="item-thumb">
-              <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=100&h=100&fit=crop" alt="MacBook">
+              <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=80&h=80&fit=crop" alt="MacBook">
             </div>
-            <div class="item-details">
+            <div class="item-info">
               <h4>MacBook Air M2</h4>
-              <span class="product-price">$1,249</span>
+              <span class="price">$1,249</span>
             </div>
           </div>
-          <div class="featured-item">
+          <div class="list-item">
             <div class="item-thumb">
-              <img src="https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=100&h=100&fit=crop" alt="Sony Headphones">
+              <img src="https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=80&h=80&fit=crop" alt="Sony">
             </div>
-            <div class="item-details">
+            <div class="item-info">
               <h4>Sony WH-1000XM5</h4>
-              <span class="product-price">$349</span>
+              <span class="price">$349</span>
             </div>
           </div>
         </div>
@@ -348,40 +313,40 @@
 
       <!-- Free Learning -->
       <div class="featured-card">
-        <div class="featured-header">
-          <h3><span class="header-emoji">📚</span> Free Learning</h3>
-          <a href="#" class="view-all">View All</a>
+        <div class="card-header">
+          <h3><span class="emoji">📚</span> Free Learning</h3>
+          <a href="#" class="view-link">View All</a>
         </div>
-        <div class="featured-list">
-          <div class="featured-item">
+        <div class="card-list">
+          <div class="list-item">
             <div class="item-thumb course">
-              <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=100&h=100&fit=crop" alt="English Course">
+              <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=80&h=80&fit=crop" alt="English">
             </div>
-            <div class="item-details">
+            <div class="item-info">
               <h4>Bangla to English Speaking</h4>
-              <p>Beginner</p>
+              <span>Beginner</span>
             </div>
-            <span class="item-badge free">Free</span>
+            <span class="item-badge">Free</span>
           </div>
-          <div class="featured-item">
+          <div class="list-item">
             <div class="item-thumb course">
-              <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=100&h=100&fit=crop" alt="Marketing Course">
+              <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=80&h=80&fit=crop" alt="Marketing">
             </div>
-            <div class="item-details">
+            <div class="item-info">
               <h4>Digital Marketing Full Course</h4>
-              <p>Beginner</p>
+              <span>Beginner</span>
             </div>
-            <span class="item-badge free">Free</span>
+            <span class="item-badge">Free</span>
           </div>
-          <div class="featured-item">
+          <div class="list-item">
             <div class="item-thumb course">
-              <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=100&h=100&fit=crop" alt="Web Dev Course">
+              <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=80&h=80&fit=crop" alt="Web Dev">
             </div>
-            <div class="item-details">
+            <div class="item-info">
               <h4>Web Development Bootcamp</h4>
-              <p>Beginner</p>
+              <span>Beginner</span>
             </div>
-            <span class="item-badge free">Free</span>
+            <span class="item-badge">Free</span>
           </div>
         </div>
       </div>
@@ -389,15 +354,15 @@
   </section>
 
   <!-- LATEST UPDATES -->
-  <section class="updates-section">
+  <section class="updates-bar">
     <span class="updates-badge">Latest Updates</span>
-    <div class="updates-text">
+    <div class="updates-scroll">
       <p>New job posted: UI Designer • Payment system maintenance on 25 May • New course added in Learn Center</p>
     </div>
   </section>
 
   <!-- BOTTOM SPACER -->
-  <div class="bottom-spacer"></div>
+  <div class="spacer"></div>
 
   <!-- BOTTOM NAVIGATION -->
   <nav class="bottom-nav">
