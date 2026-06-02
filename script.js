@@ -1,59 +1,57 @@
-// FutureHub Main Script
+// FutureHub - Main JavaScript
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function() {
 
   // ========================================
   // HERO SLIDER
   // ========================================
   const slides = [
     {
-      badge: "All-in-One Platform",
-      title: "Earn, Learn & Grow<br>Your Future",
-      description: "Jobs, Freelance, Education, Marketplace, Matrimony & AI Assistance — All in One Place!",
-      button: "Explore Now"
+      label: 'All-in-One Platform',
+      title: 'Earn, Learn & Grow<br>Your Future',
+      desc: 'Jobs, Freelance, Education, Marketplace,<br>Matrimony & AI Assistance — All in One Place!',
+      cta: 'Explore Now'
     },
     {
-      badge: "Career Opportunities",
-      title: "Find Your Dream<br>Job Today",
-      description: "Discover thousands of job opportunities and freelance work from top companies.",
-      button: "Browse Jobs"
+      label: 'Career Opportunities',
+      title: 'Find Your Dream<br>Job Today',
+      desc: 'Discover thousands of job opportunities<br>and freelance work from top companies.',
+      cta: 'Browse Jobs'
     },
     {
-      badge: "Free Education",
-      title: "Learn New Skills<br>For Free",
-      description: "Access hundreds of free courses and boost your career with new skills.",
-      button: "Start Learning"
+      label: 'Free Education',
+      title: 'Learn New Skills<br>For Free',
+      desc: 'Access hundreds of free courses and<br>boost your career with new skills.',
+      cta: 'Start Learning'
     },
     {
-      badge: "AI-Powered Tools",
-      title: "AI Tools For<br>Everyone",
-      description: "Use powerful AI tools to improve productivity and automate tasks.",
-      button: "Try AI Center"
+      label: 'AI-Powered Tools',
+      title: 'AI Tools For<br>Everyone',
+      desc: 'Use powerful AI tools to improve<br>productivity and automate tasks.',
+      cta: 'Try AI Center'
     }
   ];
 
   let currentSlide = 0;
-  let slideInterval;
+  let autoSlideInterval;
 
-  const heroSlide = document.querySelector('.hero-slide');
-  const heroBadge = document.querySelector('.hero-badge');
+  const heroLabel = document.querySelector('.hero-label');
   const heroTitle = document.querySelector('.hero-title');
-  const heroDescription = document.querySelector('.hero-description');
-  const heroBtn = document.querySelector('.hero-btn');
-  const dots = document.querySelectorAll('.dot');
-  const prevBtn = document.querySelector('.hero-prev');
-  const nextBtn = document.querySelector('.hero-next');
+  const heroDesc = document.querySelector('.hero-desc');
+  const heroCta = document.querySelector('.hero-cta');
+  const dots = document.querySelectorAll('.slider-dots .dot');
+  const prevBtn = document.querySelector('.slider-arrow.prev');
+  const nextBtn = document.querySelector('.slider-arrow.next');
+  const heroBanner = document.querySelector('.hero-banner');
 
   function updateSlide(index) {
-    if (!heroSlide || !slides[index]) return;
+    if (!slides[index]) return;
 
-    // Update content
-    heroBadge.textContent = slides[index].badge;
+    heroLabel.textContent = slides[index].label;
     heroTitle.innerHTML = slides[index].title;
-    heroDescription.textContent = slides[index].description;
-    heroBtn.innerHTML = slides[index].button + ' <i class="fa-solid fa-arrow-right"></i>';
+    heroDesc.innerHTML = slides[index].desc;
+    heroCta.innerHTML = slides[index].cta + ' <i class="fa-solid fa-arrow-right"></i>';
 
-    // Update dots
     dots.forEach((dot, i) => {
       dot.classList.toggle('active', i === index);
     });
@@ -66,230 +64,243 @@ document.addEventListener("DOMContentLoaded", function () {
     updateSlide(next);
   }
 
-  function prevSlide() {
+  function prevSlideFunc() {
     const prev = (currentSlide - 1 + slides.length) % slides.length;
     updateSlide(prev);
   }
 
   function startAutoSlide() {
-    slideInterval = setInterval(nextSlide, 5000);
+    autoSlideInterval = setInterval(nextSlide, 5000);
   }
 
   function stopAutoSlide() {
-    clearInterval(slideInterval);
+    clearInterval(autoSlideInterval);
   }
 
-  // Event Listeners for slider
+  function resetAutoSlide() {
+    stopAutoSlide();
+    startAutoSlide();
+  }
+
+  // Event listeners
   if (prevBtn) {
-    prevBtn.addEventListener('click', function() {
-      stopAutoSlide();
-      prevSlide();
-      startAutoSlide();
+    prevBtn.addEventListener('click', () => {
+      prevSlideFunc();
+      resetAutoSlide();
     });
   }
 
   if (nextBtn) {
-    nextBtn.addEventListener('click', function() {
-      stopAutoSlide();
+    nextBtn.addEventListener('click', () => {
       nextSlide();
-      startAutoSlide();
+      resetAutoSlide();
     });
   }
 
-  // Dot navigation
-  dots.forEach((dot, index) => {
-    dot.addEventListener('click', function() {
-      stopAutoSlide();
-      updateSlide(index);
-      startAutoSlide();
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      updateSlide(i);
+      resetAutoSlide();
     });
   });
 
-  // Touch/Swipe support for mobile
+  // Touch/swipe support
   let touchStartX = 0;
   let touchEndX = 0;
 
-  const heroSlider = document.querySelector('.hero-slider');
-
-  if (heroSlider) {
-    heroSlider.addEventListener('touchstart', function(e) {
+  if (heroBanner) {
+    heroBanner.addEventListener('touchstart', (e) => {
       touchStartX = e.changedTouches[0].screenX;
     }, { passive: true });
 
-    heroSlider.addEventListener('touchend', function(e) {
+    heroBanner.addEventListener('touchend', (e) => {
       touchEndX = e.changedTouches[0].screenX;
       handleSwipe();
     }, { passive: true });
   }
 
   function handleSwipe() {
-    const swipeThreshold = 50;
     const diff = touchStartX - touchEndX;
+    const threshold = 50;
 
-    if (Math.abs(diff) > swipeThreshold) {
-      stopAutoSlide();
+    if (Math.abs(diff) > threshold) {
       if (diff > 0) {
         nextSlide();
       } else {
-        prevSlide();
+        prevSlideFunc();
       }
-      startAutoSlide();
+      resetAutoSlide();
     }
   }
 
   // Initialize slider
-  if (heroSlide) {
+  if (heroLabel) {
     updateSlide(0);
     startAutoSlide();
   }
 
   // ========================================
-  // NOTICE BAR ANIMATION
+  // NOTICE BAR ROTATION
   // ========================================
   const notices = [
-    "Welcome to FutureHub! Explore endless opportunities. New users get 100 points!",
-    "New Jobs Added Daily! Check out the latest opportunities.",
-    "Free Learning Courses Available! Start learning today.",
-    "AI Center Now Live! Try our AI-powered tools.",
-    "Marketplace Updated! New products available now."
+    'Welcome to FutureHub! Explore endless opportunities. New users get 100 points!',
+    'New Jobs Added Daily! Check out the latest opportunities.',
+    'Free Learning Courses Available! Start learning today.',
+    'AI Center Now Live! Try our AI-powered tools.',
+    'Marketplace Updated! New products available now.'
   ];
 
   let currentNotice = 0;
   const noticeText = document.querySelector('.notice-text');
 
-  function changeNotice() {
+  function rotateNotice() {
     if (!noticeText) return;
 
     noticeText.style.opacity = '0';
-    
+    noticeText.style.transform = 'translateY(-5px)';
+
     setTimeout(() => {
       currentNotice = (currentNotice + 1) % notices.length;
       noticeText.textContent = notices[currentNotice];
       noticeText.style.opacity = '1';
+      noticeText.style.transform = 'translateY(0)';
     }, 300);
   }
 
   if (noticeText) {
-    noticeText.style.transition = 'opacity 0.3s ease';
-    setInterval(changeNotice, 4000);
+    noticeText.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+    setInterval(rotateNotice, 4000);
   }
 
   // ========================================
-  // SEARCH FUNCTIONALITY
+  // SEARCH BOX FOCUS STATE
   // ========================================
-  const searchInput = document.querySelector('.search-input');
+  const searchInput = document.querySelector('.search-box input');
+  const searchBox = document.querySelector('.search-box');
 
-  if (searchInput) {
-    searchInput.addEventListener('keyup', function(e) {
-      const query = this.value.trim();
-      
-      if (e.key === 'Enter' && query) {
-        // Handle search submission
-        console.log('Searching for:', query);
-        // Add your search logic here
+  if (searchInput && searchBox) {
+    searchInput.addEventListener('focus', () => {
+      searchBox.style.boxShadow = '0 0 0 2px rgba(37, 99, 235, 0.2)';
+      searchBox.style.background = '#ffffff';
+    });
+
+    searchInput.addEventListener('blur', () => {
+      searchBox.style.boxShadow = 'none';
+      searchBox.style.background = '#f3f4f6';
+    });
+
+    searchInput.addEventListener('keyup', (e) => {
+      if (e.key === 'Enter') {
+        const query = searchInput.value.trim();
+        if (query) {
+          console.log('Search query:', query);
+          // Implement search functionality
+        }
       }
-    });
-
-    searchInput.addEventListener('focus', function() {
-      this.parentElement.style.boxShadow = '0 0 0 2px rgba(37, 99, 235, 0.2)';
-    });
-
-    searchInput.addEventListener('blur', function() {
-      this.parentElement.style.boxShadow = 'none';
     });
   }
 
   // ========================================
   // BOTTOM NAVIGATION
   // ========================================
-  const navItems = document.querySelectorAll('.nav-item');
+  const navItems = document.querySelectorAll('.bottom-nav .nav-item');
 
   navItems.forEach(item => {
     item.addEventListener('click', function(e) {
-      // Don't prevent default for actual navigation
-      // This is for visual feedback only
-      
-      // Remove active class from all items
+      if (this.classList.contains('add-post')) {
+        e.preventDefault();
+        console.log('Add Post clicked');
+        // Implement add post modal
+        return;
+      }
+
       navItems.forEach(nav => nav.classList.remove('active'));
-      
-      // Add active class to clicked item (except add button)
-      if (!this.classList.contains('add-btn')) {
+      if (!this.classList.contains('add-post')) {
         this.classList.add('active');
       }
     });
   });
 
   // ========================================
-  // MENU CARD HOVER EFFECT (Touch devices)
+  // MENU CARD INTERACTIONS
   // ========================================
   const menuCards = document.querySelectorAll('.menu-card');
 
   menuCards.forEach(card => {
+    // Touch feedback for mobile
     card.addEventListener('touchstart', function() {
-      this.style.transform = 'translateY(-2px)';
+      this.style.transform = 'scale(0.98)';
     }, { passive: true });
 
     card.addEventListener('touchend', function() {
-      this.style.transform = 'translateY(0)';
+      this.style.transform = '';
     }, { passive: true });
   });
 
   // ========================================
-  // STATS COUNTER ANIMATION
+  // STATS ANIMATION (Intersection Observer)
   // ========================================
   const statValues = document.querySelectorAll('.stat-value');
-
-  const observerOptions = {
-    threshold: 0.5,
-    rootMargin: '0px'
-  };
 
   const statsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const target = entry.target;
-        const finalValue = target.textContent;
-        
-        // Animate the value
-        target.style.opacity = '0';
-        target.style.transform = 'translateY(10px)';
-        
+        const el = entry.target;
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(10px)';
+
         setTimeout(() => {
-          target.style.transition = 'all 0.3s ease';
-          target.style.opacity = '1';
-          target.style.transform = 'translateY(0)';
+          el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
         }, 100);
 
-        statsObserver.unobserve(target);
+        statsObserver.unobserve(el);
       }
     });
-  }, observerOptions);
+  }, { threshold: 0.5 });
 
-  statValues.forEach(value => {
-    statsObserver.observe(value);
-  });
+  statValues.forEach(val => statsObserver.observe(val));
 
   // ========================================
-  // SCROLL BEHAVIOR
+  // HEADER SCROLL EFFECT
   // ========================================
-  let lastScrollTop = 0;
   const header = document.querySelector('.header');
 
-  window.addEventListener('scroll', function() {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-    // Add shadow to header on scroll
-    if (scrollTop > 10) {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) {
       header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
     } else {
-      header.style.boxShadow = '0 2px 12px rgba(0, 0, 0, 0.08)';
+      header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.06)';
     }
-
-    lastScrollTop = scrollTop;
   }, { passive: true });
 
   // ========================================
-  // LAZY LOADING FOR IMAGES
+  // PROFILE DROPDOWN (Desktop)
+  // ========================================
+  const profileDropdown = document.querySelector('.profile-dropdown');
+
+  if (profileDropdown) {
+    profileDropdown.addEventListener('click', () => {
+      console.log('Profile dropdown clicked');
+      // Implement profile dropdown menu
+    });
+  }
+
+  // ========================================
+  // NOTIFICATION BUTTON
+  // ========================================
+  const notificationBtn = document.querySelector('.notification-btn');
+
+  if (notificationBtn) {
+    notificationBtn.addEventListener('click', () => {
+      console.log('Notifications clicked');
+      // Implement notifications panel
+    });
+  }
+
+  // ========================================
+  // LAZY LOADING IMAGES
   // ========================================
   const lazyImages = document.querySelectorAll('img[data-src]');
 
@@ -304,35 +315,19 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  lazyImages.forEach(img => {
-    imageObserver.observe(img);
-  });
+  lazyImages.forEach(img => imageObserver.observe(img));
 
   // ========================================
-  // RIPPLE EFFECT FOR BUTTONS
+  // PREVENT DOUBLE TAP ZOOM (iOS)
   // ========================================
-  function createRipple(event) {
-    const button = event.currentTarget;
-    const circle = document.createElement('span');
-    const diameter = Math.max(button.clientWidth, button.clientHeight);
-    const radius = diameter / 2;
+  let lastTouchEnd = 0;
 
-    circle.style.width = circle.style.height = `${diameter}px`;
-    circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
-    circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
-    circle.classList.add('ripple');
-
-    const ripple = button.getElementsByClassName('ripple')[0];
-    if (ripple) {
-      ripple.remove();
+  document.addEventListener('touchend', (e) => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) {
+      e.preventDefault();
     }
-
-    button.appendChild(circle);
-  }
-
-  const rippleButtons = document.querySelectorAll('.hero-btn, .add-icon');
-  rippleButtons.forEach(button => {
-    button.addEventListener('click', createRipple);
-  });
+    lastTouchEnd = now;
+  }, false);
 
 });
