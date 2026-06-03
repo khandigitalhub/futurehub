@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>FutureHub - Premium Platform</title>
+    <title>FutureHub - Earn • Learn • Grow</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -14,419 +15,551 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: #f0f4f8;
+            font-family: 'Poppins', sans-serif;
+            background: #F8FAFC;
         }
 
-        .container {
-            max-width: 500px;
+        .app-container {
+            max-width: 430px;
             margin: 0 auto;
-            background: #ffffff;
+            background: #F8FAFC;
             min-height: 100vh;
-            padding-bottom: 80px;
+            padding-bottom: 75px;
             position: relative;
-            box-shadow: 0 0 20px rgba(0,0,0,0.05);
         }
 
-        /* ========== হেডার (চিকন, প্রিমিয়াম) ========== */
+        /* ========== HEADER (Premium - Like Reference) ========== */
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 16px;
-            background: linear-gradient(135deg, #0f172a, #1e293b);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            padding: 16px 20px;
+            background: white;
+            border-bottom: 1px solid #E2E8F0;
+        }
+        .logo-section {
+            display: flex;
+            flex-direction: column;
         }
         .logo {
-            font-size: 1.1rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            color: white;
+            background: linear-gradient(135deg, #2563EB, #3B82F6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .logo-sub {
+            font-size: 0.65rem;
+            color: #64748B;
             letter-spacing: 0.5px;
         }
-        .logo i {
-            margin-right: 4px;
-            color: #38bdf8;
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
         }
-        .balance {
-            background: rgba(56, 189, 248, 0.2);
-            padding: 4px 10px;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: #38bdf8;
-        }
-
-        /* ========== হিরো + এড ব্যানার (স্পেস সহ) ========== */
-        .hero {
-            background: linear-gradient(135deg, #0f172a, #1e293b);
-            padding: 20px 16px 24px;
-            color: white;
-        }
-        .hero h1 {
-            font-size: 1.3rem;
-            margin-bottom: 6px;
-            font-weight: 700;
-        }
-        .hero p {
-            font-size: 0.7rem;
-            opacity: 0.8;
-            margin-bottom: 14px;
-        }
-        .btn-primary {
-            background: white;
-            color: #0f172a;
+        .icon-btn {
+            background: none;
             border: none;
-            padding: 7px 16px;
-            border-radius: 30px;
-            font-weight: 600;
+            font-size: 1.2rem;
+            color: #475569;
             cursor: pointer;
-            font-size: 0.75rem;
+            position: relative;
         }
-        .btn-outline {
-            background: transparent;
-            border: 1px solid white;
+        .badge {
+            position: absolute;
+            top: -4px;
+            right: -6px;
+            background: #EF4444;
             color: white;
-            padding: 6px 12px;
-            border-radius: 30px;
-            cursor: pointer;
-            margin-left: 8px;
-            font-size: 0.75rem;
+            font-size: 0.6rem;
+            padding: 2px 5px;
+            border-radius: 20px;
+            font-weight: 600;
         }
-
-        /* এড ব্যানার - চিকন, চারপাশে স্পেস */
-        .ad-banner {
-            margin-top: 20px;
-            background: rgba(255,255,255,0.08);
-            border-radius: 14px;
-            padding: 8px;
-            text-align: center;
-            backdrop-filter: blur(4px);
-            cursor: pointer;
-            transition: 0.2s;
-            border: 0.5px solid rgba(255,255,255,0.15);
-        }
-        .ad-banner img {
-            width: 100%;
-            border-radius: 10px;
-            max-height: 60px;
-            object-fit: cover;
-        }
-        .ad-placeholder {
-            font-size: 0.65rem;
-            color: rgba(255,255,255,0.5);
+        .avatar {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #2563EB, #3B82F6);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
         }
 
-        /* নোটিস বার - চিকন */
-        .notice-bar {
-            background: #fef3c7;
-            margin: 12px 16px;
-            padding: 6px 12px;
+        /* ========== HERO BANNER (Premium Gradient + Mockup) ========== */
+        .hero {
+            background: linear-gradient(135deg, #1E3A8A, #3B82F6);
+            margin: 16px 16px 0;
+            border-radius: 28px;
+            padding: 24px 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 35px -10px rgba(37,99,235,0.3);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        .hero-badge {
+            background: rgba(255,255,255,0.2);
+            display: inline-block;
+            padding: 4px 12px;
             border-radius: 30px;
-            display: flex;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: white;
+            margin-bottom: 12px;
+        }
+        .hero h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: white;
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+        .hero p {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 20px;
+        }
+        .explore-btn {
+            background: white;
+            color: #2563EB;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: inline-flex;
             align-items: center;
             gap: 8px;
-            font-size: 0.65rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
-        .notice-bar i {
-            color: #d97706;
+        .mockup-group {
+            position: absolute;
+            right: -20px;
+            bottom: -20px;
+            display: flex;
+            gap: 8px;
+            opacity: 0.7;
+        }
+        .mockup {
+            background: rgba(255,255,255,0.15);
+            border-radius: 12px;
+            padding: 8px;
+            width: 60px;
+            height: 70px;
+            backdrop-filter: blur(4px);
+        }
+        .floating-icon {
+            position: absolute;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+        }
+        .icon-1 { top: 20px; right: 60px; }
+        .icon-2 { bottom: 40px; left: 20px; }
+        .icon-3 { top: 50px; left: 30px; }
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 16px;
+        }
+        .dot {
+            width: 6px;
+            height: 6px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 50%;
+        }
+        .dot.active {
+            width: 20px;
+            background: white;
+            border-radius: 10px;
+        }
+
+        /* ========== NOTICE BAR (Like Reference) ========== */
+        .notice-bar {
+            background: #FEF3C7;
+            margin: 16px;
+            padding: 10px 16px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .notice-icon {
+            color: #D97706;
+            font-size: 1rem;
+        }
+        .notice-label {
+            color: #D97706;
+            font-weight: 600;
             font-size: 0.7rem;
         }
         .notice-text {
             flex: 1;
+            font-size: 0.7rem;
+            color: #92400E;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            color: #92400e;
         }
         .notice-btn {
             background: none;
             border: none;
-            color: #d97706;
+            color: #D97706;
             font-weight: 500;
-            font-size: 0.6rem;
+            font-size: 0.7rem;
             cursor: pointer;
         }
 
-        /* সেকশন টাইটেল */
-        .section-title {
+        /* ========== SERVICE BUTTONS (8 buttons, 4x2 grid) ========== */
+        .section-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 14px 16px 6px;
+            align-items: baseline;
+            padding: 16px 16px 8px;
         }
-        .section-title h2 {
-            font-size: 0.95rem;
+        .section-header h2 {
+            font-size: 1.1rem;
             font-weight: 600;
-            color: #1e293b;
+            color: #1E293B;
         }
-        .section-title a {
-            color: #3b82f6;
+        .section-header a {
+            color: #2563EB;
             text-decoration: none;
-            font-size: 0.65rem;
+            font-size: 0.7rem;
+            font-weight: 500;
         }
-
-        /* 4-কলাম গ্রিড - রঙিন বাটন */
-        .grid-4col {
+        .grid-4x2 {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            padding: 0 12px;
+            gap: 12px;
+            padding: 0 16px;
         }
-        .card {
-            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-            border-radius: 14px;
-            padding: 8px 4px;
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 14px 8px;
             text-align: center;
             cursor: pointer;
             transition: all 0.2s;
-            border: 0.5px solid #eef2ff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border: 1px solid #F1F5F9;
         }
-        .card:active {
-            transform: scale(0.95);
+        .service-card:active {
+            transform: scale(0.96);
+            box-shadow: 0 4px 12px rgba(37,99,235,0.1);
         }
-        /* প্রতিটি কার্ডের আলাদা রঙ */
-        .card:nth-child(1) i { color: #3b82f6; }
-        .card:nth-child(2) i { color: #8b5cf6; }
-        .card:nth-child(3) i { color: #06b6d4; }
-        .card:nth-child(4) i { color: #10b981; }
-        .card:nth-child(5) i { color: #f59e0b; }
-        .card:nth-child(6) i { color: #ef4444; }
-        .card:nth-child(7) i { color: #ec4899; }
-        .card:nth-child(8) i { color: #6366f1; }
-        .card:nth-child(9) i { color: #14b8a6; }
-        .card:nth-child(10) i { color: #f97316; }
-        .card:nth-child(11) i { color: #a855f7; }
-        .card:nth-child(12) i { color: #64748b; }
-        
-        .card i {
-            font-size: 1.2rem;
+        .service-card i {
+            font-size: 1.6rem;
+            margin-bottom: 8px;
             display: block;
+        }
+        .service-card span {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #1E293B;
+        }
+        .service-card small {
+            font-size: 0.55rem;
+            color: #64748B;
+        }
+        /* আইকনের রং */
+        .service-card:nth-child(1) i { color: #3B82F6; }
+        .service-card:nth-child(2) i { color: #8B5CF6; }
+        .service-card:nth-child(3) i { color: #10B981; }
+        .service-card:nth-child(4) i { color: #F59E0B; }
+        .service-card:nth-child(5) i { color: #EC4899; }
+        .service-card:nth-child(6) i { color: #06B6D4; }
+        .service-card:nth-child(7) i { color: #EF4444; }
+        .service-card:nth-child(8) i { color: #64748B; }
+
+        /* ========== STATISTICS SECTION ========== */
+        .stats-row {
+            display: flex;
+            background: white;
+            margin: 16px;
+            border-radius: 24px;
+            padding: 16px 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border: 1px solid #F1F5F9;
+        }
+        .stat-item {
+            flex: 1;
+            text-align: center;
+            border-right: 1px solid #E2E8F0;
+        }
+        .stat-item:last-child {
+            border-right: none;
+        }
+        .stat-item i {
+            font-size: 1rem;
+            color: #3B82F6;
             margin-bottom: 4px;
         }
-        .card span {
-            font-size: 0.65rem;
-            font-weight: 600;
-            display: block;
-            color: #1e293b;
+        .stat-number {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1E293B;
         }
-        .card small {
-            font-size: 0.55rem;
-            color: #64748b;
+        .stat-label {
+            font-size: 0.6rem;
+            color: #64748B;
         }
 
-        /* স্ট্যাটিস্টিকস কার্ড - রঙিন */
-        .stats-scroll {
+        /* ========== FEATURED SECTIONS ========== */
+        .featured-scroll {
             display: flex;
-            gap: 10px;
+            gap: 14px;
             overflow-x: auto;
-            padding: 0 16px 12px;
+            padding: 0 16px 16px;
             scrollbar-width: thin;
         }
-        .stat-card {
-            background: linear-gradient(135deg, #f8fafc, #ffffff);
-            border-radius: 16px;
-            padding: 10px 18px;
-            text-align: center;
-            min-width: 85px;
-            border: 0.5px solid #eef2ff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        .featured-card {
+            min-width: 220px;
+            background: white;
+            border-radius: 20px;
+            padding: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border: 1px solid #F1F5F9;
         }
-        .stat-card .num {
+        .featured-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .featured-sub {
+            font-size: 0.65rem;
+            color: #64748B;
+            margin-bottom: 8px;
+        }
+        .featured-price {
+            font-size: 0.75rem;
             font-weight: 700;
-            font-size: 1rem;
-            display: block;
-            color: #3b82f6;
+            color: #2563EB;
         }
-        .stat-card .label {
+        .free-badge {
+            background: #E0E7FF;
+            color: #4338CA;
+            padding: 2px 8px;
+            border-radius: 20px;
             font-size: 0.6rem;
-            color: #64748b;
         }
 
-        /* স্ট্যাটাস কার্ড */
+        /* ========== STATUS CARD ========== */
         .status-card {
-            background: #f1f5f9;
-            margin: 12px 16px;
-            padding: 8px 14px;
+            background: white;
+            margin: 16px;
+            padding: 12px 16px;
             border-radius: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
         .logout-btn {
-            background: #ef4444;
+            background: #EF4444;
             color: white;
             border: none;
-            padding: 4px 10px;
+            padding: 6px 14px;
             border-radius: 30px;
             cursor: pointer;
-            font-size: 0.65rem;
+            font-size: 0.7rem;
         }
 
-        /* বটম ন্যাভ */
+        /* ========== BOTTOM NAVIGATION ========== */
         .bottom-nav {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            max-width: 500px;
+            max-width: 430px;
             margin: 0 auto;
-            background: rgba(255,255,255,0.98);
-            backdrop-filter: blur(10px);
+            background: white;
             display: flex;
             justify-content: space-around;
             align-items: center;
-            padding: 6px 12px 16px;
-            border-top: 0.5px solid #eef2ff;
+            padding: 8px 20px 20px;
+            border-top: 1px solid #E2E8F0;
+            box-shadow: 0 -4px 12px rgba(0,0,0,0.04);
         }
         .nav-item {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-decoration: none;
-            color: #94a3b8;
+            color: #94A3B8;
             font-size: 0.6rem;
-            gap: 2px;
+            gap: 4px;
             transition: 0.2s;
         }
         .nav-item i {
-            font-size: 1rem;
+            font-size: 1.2rem;
         }
         .nav-item.active {
-            color: #3b82f6;
+            color: #2563EB;
         }
         .add-btn {
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            background: linear-gradient(135deg, #2563EB, #3B82F6);
             color: white !important;
-            padding: 4px 12px;
-            border-radius: 40px;
-            margin-top: -8px;
-            box-shadow: 0 2px 6px rgba(59,130,246,0.3);
+            padding: 10px 20px;
+            border-radius: 50px;
+            margin-top: -18px;
+            box-shadow: 0 6px 14px rgba(37,99,235,0.4);
         }
         .add-btn i {
-            font-size: 0.8rem !important;
+            font-size: 1rem !important;
+        }
+        .add-btn span {
+            font-size: 0.65rem;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- হেডার (চিকন, প্রিমিয়াম) -->
+    <div class="app-container">
+        <!-- HEADER (Like Reference) -->
         <div class="header">
-            <div class="logo"><i class="fas fa-rocket"></i> FutureHub</div>
-            <span class="balance" id="balanceDisplay">💰 0</span>
+            <div class="logo-section">
+                <div class="logo">FutureHub</div>
+                <div class="logo-sub">Earn • Learn • Grow</div>
+            </div>
+            <div class="header-actions">
+                <button class="icon-btn" id="supportBtn"><i class="far fa-question-circle"></i></button>
+                <button class="icon-btn" id="notifBtn"><i class="far fa-bell"></i><span class="badge">3</span></button>
+                <div class="avatar" id="avatarBtn">F</div>
+            </div>
         </div>
 
-        <!-- হিরো + এড ব্যানার (স্পেস সহ) -->
+        <!-- HERO BANNER (Premium Gradient + Mockup) -->
         <div class="hero">
-            <h1>Earn, Learn & Grow<br>Your Future</h1>
-            <p>Jobs, Freelance, Marketplace, AI & More — All in One!</p>
-            <div id="authButtons">
-                <button class="btn-primary" onclick="window.location.href='login.html'">Login</button>
-                <button class="btn-outline" onclick="window.location.href='register.html'">Register</button>
+            <div class="hero-content">
+                <div class="hero-badge">All-in-One Platform</div>
+                <h1>Earn, Learn & Grow<br>Your Future</h1>
+                <p>Jobs, Freelance, Education, Marketplace, Matrimony & AI Assistance — All in One Place!</p>
+                <button class="explore-btn" id="exploreBtn">Explore Now <i class="fas fa-arrow-right"></i></button>
             </div>
-            <div id="loggedInView" style="display: none;">
-                <button class="btn-primary" id="exploreBtn">Explore Now →</button>
+            <div class="floating-icon icon-1"><i class="fas fa-briefcase"></i></div>
+            <div class="floating-icon icon-2"><i class="fas fa-graduation-cap"></i></div>
+            <div class="floating-icon icon-3"><i class="fas fa-chart-line"></i></div>
+            <div class="mockup-group">
+                <div class="mockup"><i class="fas fa-mobile-alt"></i></div>
+                <div class="mockup"><i class="fas fa-laptop"></i></div>
             </div>
-            <!-- এড ব্যানার - বিজ্ঞাপনের লেখা নেই, শুধু ব্যানার স্পেস -->
-            <div class="ad-banner" id="adBanner">
-                <div class="ad-placeholder">
-                    <i class="fas fa-image"></i> Banner Space
-                </div>
+            <div class="slider-dots">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
             </div>
         </div>
 
-        <!-- নোটিস বার -->
+        <!-- NOTICE BAR -->
         <div class="notice-bar">
-            <i class="fas fa-info-circle"></i>
-            <div class="notice-text">🎉 Welcome to FutureHub! New users get 100 points!</div>
-            <button class="notice-btn" id="noticeBtn">View</button>
+            <i class="fas fa-info-circle notice-icon"></i>
+            <span class="notice-label">Notice:</span>
+            <div class="notice-text">🎉 Welcome to FutureHub! Explore endless opportunities. New users get 100 points!</div>
+            <button class="notice-btn" id="noticeBtn">View All</button>
         </div>
 
-        <!-- সার্ভিস কার্ড (রঙিন) -->
-        <div class="section-title">
+        <!-- SERVICES (8 Buttons - 4x2 Grid) -->
+        <div class="section-header">
             <h2>Services</h2>
-            <a href="#" id="allServicesLink">View All <i class="fas fa-angle-right"></i></a>
+            <a href="#" id="allServicesLink">See All <i class="fas fa-angle-right"></i></a>
         </div>
-        <div class="grid-4col">
-            <div class="card"><i class="fas fa-coins"></i><span>Earn</span><small>Center</small></div>
-            <div class="card"><i class="fas fa-graduation-cap"></i><span>Learn</span><small>Center</small></div>
-            <div class="card"><i class="fas fa-briefcase"></i><span>Career</span><small>Center</small></div>
-            <div class="card"><i class="fas fa-file-alt"></i><span>CV</span><small>Center</small></div>
-            <div class="card"><i class="fas fa-store"></i><span>Market</span><small>place</small></div>
-            <div class="card"><i class="fab fa-fiverr"></i><span>Fiverr</span><small>Work</small></div>
-            <div class="card"><i class="fas fa-heart"></i><span>Matri</span><small>mony</small></div>
-            <div class="card"><i class="fas fa-robot"></i><span>AI</span><small>Center</small></div>
-            <div class="card"><i class="fas fa-user"></i><span>My</span><small>Account</small></div>
-            <div class="card"><i class="fas fa-chart-line"></i><span>Invest</span><small>ment</small></div>
-            <div class="card"><i class="fas fa-users"></i><span>Commu</span><small>nity</small></div>
-            <div class="card"><i class="fas fa-ellipsis-h"></i><span>More</span><small>Stuff</small></div>
+        <div class="grid-4x2">
+            <div class="service-card" data-service="Earn Center"><i class="fas fa-coins"></i><span>Earn Center</span></div>
+            <div class="service-card" data-service="Learn Center"><i class="fas fa-graduation-cap"></i><span>Learn Center</span></div>
+            <div class="service-card" data-service="Career Center"><i class="fas fa-briefcase"></i><span>Career Center</span></div>
+            <div class="service-card" data-service="Marketplace"><i class="fas fa-store"></i><span>Marketplace</span></div>
+            <div class="service-card" data-service="Fiverr Work"><i class="fab fa-fiverr"></i><span>Fiverr Work</span></div>
+            <div class="service-card" data-service="Matrimony"><i class="fas fa-heart"></i><span>Matrimony</span></div>
+            <div class="service-card" data-service="AI Center"><i class="fas fa-robot"></i><span>AI Center</span></div>
+            <div class="service-card" data-service="More"><i class="fas fa-ellipsis-h"></i><span>More</span></div>
         </div>
 
-        <!-- স্ট্যাটিস্টিকস (রঙিন) -->
-        <div class="section-title">
+        <!-- STATISTICS SECTION -->
+        <div class="section-header">
             <h2>Platform Stats</h2>
-            <a href="#" id="statsManageLink">Manage</a>
         </div>
-        <div class="stats-scroll" id="statsContainer">
-            <!-- স্ট্যাটিসর্বার ডাটা JavaScript থেকে লোড হবে -->
+        <div class="stats-row">
+            <div class="stat-item"><i class="fas fa-users"></i><div class="stat-number">125k+</div><div class="stat-label">Total Users</div></div>
+            <div class="stat-item"><i class="fas fa-briefcase"></i><div class="stat-number">1.2k</div><div class="stat-label">Active Jobs</div></div>
+            <div class="stat-item"><i class="fas fa-laptop-code"></i><div class="stat-number">850+</div><div class="stat-label">Freelancers</div></div>
+            <div class="stat-item"><i class="fas fa-box"></i><div class="stat-number">3.4k</div><div class="stat-label">Products</div></div>
+            <div class="stat-item"><i class="fas fa-book"></i><div class="stat-number">120+</div><div class="stat-label">Courses</div></div>
         </div>
 
-        <!-- স্ট্যাটাস কার্ড -->
+        <!-- FEATURED JOBS -->
+        <div class="section-header">
+            <h2>Featured Jobs</h2>
+            <a href="#" id="seeAllJobs">See All <i class="fas fa-angle-right"></i></a>
+        </div>
+        <div class="featured-scroll">
+            <div class="featured-card"><div class="featured-title">UI/UX Designer</div><div class="featured-sub">Remote • Beginner</div><div class="featured-price">$500 - $800</div><span class="free-badge">Free</span></div>
+            <div class="featured-card"><div class="featured-title">Full Stack Developer</div><div class="featured-sub">Dhaka • Beginner</div><div class="featured-price">$600 - $1200</div><span class="free-badge">Free</span></div>
+            <div class="featured-card"><div class="featured-title">Digital Marketer</div><div class="featured-sub">Remote • Beginner</div><div class="featured-price">$300 - $600</div><span class="free-badge">Free</span></div>
+        </div>
+
+        <!-- POPULAR PRODUCTS -->
+        <div class="section-header">
+            <h2>Popular Products</h2>
+            <a href="#">See All <i class="fas fa-angle-right"></i></a>
+        </div>
+        <div class="featured-scroll">
+            <div class="featured-card"><div class="featured-title">Sony WH-1000XM5</div><div class="featured-sub">Headphones</div><div class="featured-price">$349</div></div>
+            <div class="featured-card"><div class="featured-title">Web Dev Bootcamp</div><div class="featured-sub">Course</div><div class="featured-price">Free</div></div>
+            <div class="featured-card"><div class="featured-title">Digital Marketing</div><div class="featured-sub">Full Course</div><div class="featured-price">Free</div></div>
+        </div>
+
+        <!-- FREE LEARNING -->
+        <div class="section-header">
+            <h2>Free Learning</h2>
+            <a href="#">See All <i class="fas fa-angle-right"></i></a>
+        </div>
+        <div class="featured-scroll">
+            <div class="featured-card"><div class="featured-title">Bangla to English</div><div class="featured-sub">Speaking Course</div><div class="featured-price">Free</div></div>
+            <div class="featured-card"><div class="featured-title">Web Development</div><div class="featured-sub">Bootcamp</div><div class="featured-price">Free</div></div>
+        </div>
+
+        <!-- STATUS CARD (Shows when logged in) -->
         <div class="status-card" id="statusCard" style="display: none;">
-            <span>👋 Welcome, <span id="userName"></span>!</span>
+            <span>👋 Welcome, <span id="userName"></span>! | 💰 <span id="balanceDisplay">0</span> pts</span>
             <button class="logout-btn" id="logoutBtn">Logout</button>
         </div>
 
-        <!-- বটম ন্যাভ -->
+        <!-- BOTTOM NAVIGATION -->
         <div class="bottom-nav">
-            <a href="index.html" class="nav-item active"><i class="fas fa-home"></i><span>Home</span></a>
+            <a href="#" class="nav-item active"><i class="fas fa-home"></i><span>Home</span></a>
             <a href="#" class="nav-item" id="jobsNav"><i class="fas fa-briefcase"></i><span>Jobs</span></a>
-            <a href="#" class="nav-item add-btn" id="addPostNav"><i class="fas fa-plus-circle"></i><span>Post</span></a>
-            <a href="#" class="nav-item" id="messagesNav"><i class="fas fa-comment"></i><span>Chat</span></a>
+            <a href="#" class="nav-item add-btn" id="addPostNav"><i class="fas fa-plus-circle"></i><span>Add Post</span></a>
+            <a href="#" class="nav-item" id="messagesNav"><i class="fas fa-comment-dots"></i><span>Messages</span></a>
             <a href="#" class="nav-item" id="profileNav"><i class="fas fa-user"></i><span>Profile</span></a>
         </div>
     </div>
 
     <script>
+        // Supabase Config
         const SUPABASE_URL = 'https://pvuiqfimcwjiijwklbll.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_fQECCsxmVFT008GceAD8GA_SzeXobm0';
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        // স্ট্যাটিস্টিকস লোড (এডমিন প্যানেল থেকে কন্ট্রোল হবে)
-        async function loadStats() {
-            // বর্তমানে ডিফল্ট ডাটা, এডমিন প্যানেল থেকে আপডেট হবে
-            const stats = [
-                { num: '125k+', label: 'Total Users' },
-                { num: '1.2k', label: 'Active Jobs' },
-                { num: '850+', label: 'Freelancers' },
-                { num: '3.4k', label: 'Products' },
-                { num: '120+', label: 'Courses' }
-            ];
-            
-            const container = document.getElementById('statsContainer');
-            container.innerHTML = stats.map(s => `
-                <div class="stat-card">
-                    <span class="num">${s.num}</span>
-                    <span class="label">${s.label}</span>
-                </div>
-            `).join('');
-        }
-        loadStats();
-
-        // ইউজার চেক
+        // Auth Functions
         async function checkUser() {
             const { data: { user } } = await supabase.auth.getUser();
             if (user) {
-                const { data: userData } = await supabase
-                    .from('users')
-                    .select('*')
-                    .eq('id', user.id)
-                    .single();
+                const { data: userData } = await supabase.from('users').select('*').eq('id', user.id).single();
                 return { user, userData };
             }
             return null;
@@ -440,51 +573,35 @@
         async function loadUserData() {
             const userData = await checkUser();
             if (userData && userData.user) {
-                document.getElementById('authButtons').style.display = 'none';
-                document.getElementById('loggedInView').style.display = 'block';
                 document.getElementById('statusCard').style.display = 'flex';
                 const name = userData.userData?.full_name || userData.user.email.split('@')[0];
                 document.getElementById('userName').innerText = name;
-                document.getElementById('balanceDisplay').innerHTML = `💰 ${userData.userData?.balance || 100}`;
+                document.getElementById('balanceDisplay').innerText = userData.userData?.balance || 100;
             }
         }
         loadUserData();
 
-        // ইভেন্ট হ্যান্ডলার
+        // Event Listeners
         document.getElementById('logoutBtn')?.addEventListener('click', logout);
-        document.getElementById('exploreBtn')?.addEventListener('click', () => alert('🚀 FutureHub এ স্বাগতম!'));
-        document.getElementById('noticeBtn')?.addEventListener('click', () => alert('📢 নোটিস: নতুন জব পোস্ট হয়েছে!'));
+        document.getElementById('exploreBtn')?.addEventListener('click', () => alert('🚀 Explore FutureHub!'));
+        document.getElementById('noticeBtn')?.addEventListener('click', () => alert('📢 New job posted: UI Designer | Payment maintenance 25 May'));
+        document.getElementById('supportBtn')?.addEventListener('click', () => alert('📞 Support: help@futurehub.com'));
+        document.getElementById('notifBtn')?.addEventListener('click', () => alert('🔔 You have 3 new notifications'));
+        document.getElementById('avatarBtn')?.addEventListener('click', () => window.location.href = login.html);
+        document.getElementById('allServicesLink')?.addEventListener('click', (e) => { e.preventDefault(); alert('✨ 8 services available'); });
+        document.getElementById('seeAllJobs')?.addEventListener('click', (e) => { e.preventDefault(); alert('💼 All jobs coming soon'); });
         
-        // এড ব্যানার ক্লিক করলে More বাটনে যাবে (বিজ্ঞাপন দিতে)
-        document.getElementById('adBanner')?.addEventListener('click', () => {
-            alert('📢 বিজ্ঞাপন দিতে More সেকশনে যান।');
-        });
-        
-        document.getElementById('allServicesLink')?.addEventListener('click', (e) => { 
-            e.preventDefault(); 
-            alert('✨ ১২টি সার্ভিস শীঘ্রই চালু হবে!'); 
-        });
-        
-        document.getElementById('statsManageLink')?.addEventListener('click', (e) => { 
-            e.preventDefault(); 
-            alert('📊 স্ট্যাটিস্টিকস এডমিন প্যানেল থেকে কন্ট্রোল হবে।'); 
-        });
-        
-        document.querySelectorAll('.card').forEach(card => {
+        document.querySelectorAll('.service-card').forEach(card => {
             card.addEventListener('click', () => {
-                const service = card.querySelector('span')?.innerText || 'Service';
-                if(service === 'More') {
-                    alert('📢 এখানে বিজ্ঞাপন দেওয়ার অপশন থাকবে।');
-                } else {
-                    alert(`📱 ${service} সেকশন শীঘ্রই চালু হবে!`);
-                }
+                const service = card.getAttribute('data-service') || card.querySelector('span')?.innerText;
+                alert(`📱 ${service} section coming soon!`);
             });
         });
 
-        document.getElementById('jobsNav')?.addEventListener('click', (e) => { e.preventDefault(); alert('💼 জব সেকশন আসছে!'); });
-        document.getElementById('addPostNav')?.addEventListener('click', (e) => { e.preventDefault(); alert('📝 নতুন পোস্ট যোগ করুন'); });
-        document.getElementById('messagesNav')?.addEventListener('click', (e) => { e.preventDefault(); alert('💬 মেসেজ সিস্টেম আসছে'); });
-        document.getElementById('profileNav')?.addEventListener('click', (e) => { e.preventDefault(); alert('👤 প্রোফাইল পেইজ আসছে'); });
+        document.getElementById('jobsNav')?.addEventListener('click', (e) => { e.preventDefault(); alert('💼 Jobs section coming soon'); });
+        document.getElementById('addPostNav')?.addEventListener('click', (e) => { e.preventDefault(); alert('📝 Add Post feature coming soon'); });
+        document.getElementById('messagesNav')?.addEventListener('click', (e) => { e.preventDefault(); alert('💬 Messages coming soon'); });
+        document.getElementById('profileNav')?.addEventListener('click', (e) => { e.preventDefault(); alert('👤 Profile page coming soon'); });
     </script>
 </body>
 </html>
