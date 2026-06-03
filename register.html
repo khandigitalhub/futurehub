@@ -1,11 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Test</title>
+    <title>Register - FutureHub</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        body{font-family:Arial;background:#667eea;padding:20px}
+        .card{background:white;border-radius:20px;padding:25px;max-width:350px;margin:auto}
+        input{width:100%;padding:10px;margin:8px 0;border-radius:30px;border:1px solid #ddd}
+        button{width:100%;padding:10px;background:#667eea;color:white;border:none;border-radius:30px;cursor:pointer}
+        .msg{margin-top:15px;padding:10px;border-radius:10px}
+        .error{background:#fee;color:red}
+        .success{background:#efe;color:green}
+        .info{background:#eef;color:blue}
+    </style>
 </head>
 <body>
-    <h1>Test Page</h1>
-    <button onclick="alert('Button clicked!')">Click Me</button>
+    <div class="card">
+        <h2>Register</h2>
+        <input type="text" id="fullName" placeholder="Full Name">
+        <input type="email" id="email" placeholder="Email">
+        <input type="tel" id="mobile" placeholder="Mobile">
+        <input type="password" id="password" placeholder="Password">
+        <button id="btn">Create Account</button>
+        <div id="msg" class="msg"></div>
+        <p><a href="login.html">Login</a></p>
+    </div>
+
+    <script>
+        // সঠিক Supabase সংযোগ
+        const supabase = window.supabase.createClient(
+            'https://pvuiqfimcwjiijwklbll.supabase.co',
+            'sb_publishable_fQECCsxmVFT008GceAD8GA_SzeXobm0'
+        );
+
+        document.getElementById('btn').onclick = async function() {
+            const full = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const mobile = document.getElementById('mobile').value;
+            const pass = document.getElementById('password').value;
+            const msg = document.getElementById('msg');
+
+            msg.innerHTML = '⏳ Connecting to Supabase...';
+            msg.className = 'msg info';
+
+            // টেস্ট 1: Supabase সংযোগ চেক
+            try {
+                const { data, error } = await supabase.auth.getSession();
+                msg.innerHTML = '✅ Supabase connected! Now registering...';
+                
+                // টেস্ট 2: রেজিস্ট্রেশন
+                const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
+                    email: email,
+                    password: pass,
+                    options: {
+                        data: {
+                            full_name: full,
+                            mobile: mobile
+                        }
+                    }
+                });
+
+                if (signUpError) {
+                    msg.innerHTML = '❌ ' + signUpError.message;
+                    msg.className = 'msg error';
+                } else {
+                    msg.innerHTML = '✅ Verification email sent to ' + email;
+                    msg.className = 'msg success';
+                    setTimeout(() => {
+                        window.location.href = 'login.html';
+                    }, 3000);
+                }
+            } catch(err) {
+                msg.innerHTML = '❌ Connection error: ' + err.message;
+                msg.className = 'msg error';
+            }
+        };
+    </script>
 </body>
 </html>
