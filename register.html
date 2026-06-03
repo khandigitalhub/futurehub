@@ -4,56 +4,20 @@
     <title>Register - FutureHub</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-        }
-        .card {
-            background: white;
-            border-radius: 32px;
-            padding: 32px 24px;
-            max-width: 380px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-        }
-        h2 { margin-bottom: 24px; color: #1e293b; font-size: 1.6rem; }
-        input {
-            width: 100%;
-            padding: 14px 16px;
-            margin: 8px 0;
-            border: 1px solid #e2e8f0;
-            border-radius: 40px;
-            font-size: 1rem;
-            font-family: inherit;
-            outline: none;
-        }
-        input:focus { border-color: #667eea; }
-        button {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            padding: 14px;
-            border-radius: 40px;
-            width: 100%;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 16px;
-        }
-        .error { color: #ef4444; font-size: 0.8rem; margin-top: 12px; }
-        .success { color: #10b981; font-size: 0.8rem; margin-top: 12px; }
-        .info { color: #3b82f6; font-size: 0.8rem; margin-top: 12px; }
-        a { color: #667eea; text-decoration: none; }
-        .link { margin-top: 20px; color: #64748b; }
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Inter',sans-serif;background:linear-gradient(135deg,#667eea,#764ba2);min-height:100vh;display:flex;justify-content:center;align-items:center;padding:20px}
+        .card{background:white;border-radius:32px;padding:32px 24px;max-width:380px;width:100%;box-shadow:0 20px 40px rgba(0,0,0,0.2)}
+        h2{margin-bottom:24px;color:#1e293b;font-size:1.6rem;text-align:center}
+        input{width:100%;padding:14px 16px;margin:8px 0;border:1px solid #e2e8f0;border-radius:40px;font-size:1rem;outline:none}
+        input:focus{border-color:#667eea}
+        button{background:linear-gradient(135deg,#667eea,#764ba2);color:white;border:none;padding:14px;border-radius:40px;width:100%;font-size:1rem;font-weight:600;cursor:pointer;margin-top:16px}
+        .error{color:#ef4444;font-size:0.8rem;margin-top:12px;text-align:center}
+        .success{color:#10b981;font-size:0.8rem;margin-top:12px;text-align:center}
+        .info{color:#3b82f6;font-size:0.8rem;margin-top:12px;text-align:center}
+        a{color:#667eea;text-decoration:none}
+        .link{margin-top:20px;text-align:center;color:#64748b}
     </style>
 </head>
 <body>
@@ -69,7 +33,6 @@
     </div>
 
     <script>
-        // Supabase configuration
         const SUPABASE_URL = 'https://pvuiqfimcwjiijwklbll.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_fQECCsxmVFT008GceAD8GA_SzeXobm0';
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -81,41 +44,35 @@
             const password = document.getElementById('password').value;
             const msgDiv = document.getElementById('message');
 
-            // Validation
             if (!fullName || !email || !mobile || !password) {
-                msgDiv.innerHTML = '<div class="error">❌ All fields are required</div>';
+                msgDiv.innerHTML = '<div class="error">❌ All fields required</div>';
                 return;
             }
             if (password.length < 6) {
-                msgDiv.innerHTML = '<div class="error">❌ Password must be at least 6 characters</div>';
+                msgDiv.innerHTML = '<div class="error">❌ Password must be 6+ characters</div>';
                 return;
             }
 
-            // Show loading
-            msgDiv.innerHTML = '<div class="info">⏳ Creating account, please wait...</div>';
+            msgDiv.innerHTML = '<div class="info">⏳ Creating account...</div>';
 
-            try {
-                const { data, error } = await supabase.auth.signUp({
-                    email: email,
-                    password: password,
-                    options: {
-                        data: {
-                            full_name: fullName,
-                            mobile: mobile
-                        }
+            const { data, error } = await supabase.auth.signUp({
+                email: email,
+                password: password,
+                options: {
+                    data: {
+                        full_name: fullName,
+                        mobile: mobile
                     }
-                });
-
-                if (error) {
-                    msgDiv.innerHTML = '<div class="error">❌ ' + error.message + '</div>';
-                } else {
-                    msgDiv.innerHTML = '<div class="success">✅ Verification email sent! Please check your inbox.</div>';
-                    setTimeout(() => {
-                        window.location.href = 'login.html';
-                    }, 4000);
                 }
-            } catch(err) {
-                msgDiv.innerHTML = '<div class="error">❌ Network error: ' + err.message + '</div>';
+            });
+
+            if (error) {
+                msgDiv.innerHTML = '<div class="error">❌ ' + error.message + '</div>';
+            } else {
+                msgDiv.innerHTML = '<div class="success">✅ Verification email sent! Check your inbox.</div>';
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 4000);
             }
         });
     </script>
