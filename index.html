@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>FutureHub - Earn, Learn & Grow</title>
+    <title>FutureHub - Premium Platform</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -15,16 +15,17 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: #f5f7fb;
+            background: #f0f4f8;
         }
 
         .container {
             max-width: 500px;
             margin: 0 auto;
-            background: white;
+            background: #ffffff;
             min-height: 100vh;
-            padding-bottom: 75px;
+            padding-bottom: 80px;
             position: relative;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
         }
 
         /* ========== HEADER ========== */
@@ -32,210 +33,225 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 14px 16px;
-            background: white;
-            border-bottom: 1px solid #eef2ff;
+            padding: 12px 16px;
+            background: linear-gradient(135deg, #1e1b4b, #3b82f6);
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
         .logo {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: white;
+            letter-spacing: 0.5px;
         }
 
         .balance {
-            background: #f1f5f9;
-            padding: 6px 12px;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 12px;
             border-radius: 30px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
-            color: #1e293b;
+            color: white;
         }
 
-        /* ========== HERO + AD BANNER ========== */
+        /* ========== HERO SECTION ========== */
         .hero {
             background: linear-gradient(135deg, #1e1b4b, #3b82f6);
-            padding: 28px 20px;
+            padding: 24px 20px;
             color: white;
         }
 
         .hero h1 {
-            font-size: 1.5rem;
-            margin-bottom: 8px;
+            font-size: 1.4rem;
+            margin-bottom: 6px;
+            font-weight: 700;
         }
 
         .hero p {
-            font-size: 0.8rem;
-            opacity: 0.9;
-            margin-bottom: 20px;
+            font-size: 0.75rem;
+            opacity: 0.85;
+            margin-bottom: 16px;
         }
 
         .btn-primary {
             background: white;
             color: #3b82f6;
             border: none;
-            padding: 10px 22px;
-            border-radius: 40px;
+            padding: 8px 18px;
+            border-radius: 30px;
             font-weight: 600;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
 
         .btn-outline {
             background: transparent;
             border: 1px solid white;
             color: white;
-            padding: 8px 16px;
-            border-radius: 40px;
+            padding: 7px 14px;
+            border-radius: 30px;
             cursor: pointer;
-            margin-left: 10px;
-            font-size: 0.9rem;
+            margin-left: 8px;
+            font-size: 0.8rem;
         }
 
-        /* এড ব্যানার স্পেস */
+        /* এড ব্যানার - চিকন, চারপাশে স্পেস */
         .ad-banner {
             margin-top: 16px;
-            background: rgba(255,255,255,0.15);
-            border-radius: 16px;
-            padding: 14px;
+            background: rgba(255,255,255,0.12);
+            border-radius: 12px;
+            padding: 10px;
             text-align: center;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(4px);
             cursor: pointer;
             transition: 0.2s;
+            border: 0.5px solid rgba(255,255,255,0.2);
         }
-
-        .ad-banner:active {
-            background: rgba(255,255,255,0.25);
-        }
-
         .ad-banner span {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
         }
 
-        /* ========== নোটিস বার ========== */
+        /* নোটিস বার - চিকন */
         .notice-bar {
-            background: #fef9c3;
+            background: #fef3c7;
             margin: 12px 16px;
-            padding: 10px 14px;
-            border-radius: 50px;
+            padding: 8px 12px;
+            border-radius: 30px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 0.75rem;
+            gap: 8px;
+            font-size: 0.7rem;
         }
-
         .notice-bar i {
             color: #d97706;
-            font-size: 1rem;
+            font-size: 0.8rem;
         }
-
         .notice-text {
             flex: 1;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            color: #92400e;
         }
-
         .notice-btn {
             background: none;
             border: none;
             color: #d97706;
-            font-weight: 600;
-            font-size: 0.7rem;
+            font-weight: 500;
+            font-size: 0.65rem;
             cursor: pointer;
         }
 
-        /* ========== 4-কলাম গ্রিড ========== */
+        /* সেকশন টাইটেল */
         .section-title {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 16px 8px;
+            padding: 14px 16px 6px;
         }
-
         .section-title h2 {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             color: #1e293b;
         }
-
         .section-title a {
             color: #3b82f6;
             text-decoration: none;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
         }
 
+        /* 4-কলাম গ্রিড - ছোট বাটন */
         .grid-4col {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            padding: 0 16px;
+            gap: 10px;
+            padding: 0 12px;
         }
-
         .card {
-            background: #f8fafc;
-            border-radius: 18px;
-            padding: 12px 6px;
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            border-radius: 14px;
+            padding: 8px 4px;
             text-align: center;
             cursor: pointer;
             transition: all 0.2s;
+            border: 0.5px solid #eef2ff;
         }
-
         .card:active {
-            transform: scale(0.96);
-            background: #eef2ff;
+            transform: scale(0.95);
+            background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
         }
-
         .card i {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             color: #3b82f6;
             display: block;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
-
         .card span {
-            font-size: 0.7rem;
-            font-weight: 500;
+            font-size: 0.65rem;
+            font-weight: 600;
             display: block;
+            color: #1e293b;
+        }
+        .card small {
+            font-size: 0.55rem;
+            color: #64748b;
         }
 
-        .card small {
+        /* স্ট্যাটিস্টিকস কার্ড - হরাইজন্টাল স্ক্রোল */
+        .stats-scroll {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 0 16px 12px;
+            scrollbar-width: thin;
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #f8fafc, #ffffff);
+            border-radius: 16px;
+            padding: 10px 18px;
+            text-align: center;
+            min-width: 85px;
+            border: 0.5px solid #eef2ff;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+        .stat-card .num {
+            font-weight: 700;
+            font-size: 1rem;
+            display: block;
+            color: #3b82f6;
+        }
+        .stat-card .label {
             font-size: 0.6rem;
             color: #64748b;
         }
 
-        /* ========== স্ট্যাটাস কার্ড ========== */
+        /* স্ট্যাটাস কার্ড */
         .status-card {
             background: #f1f5f9;
-            margin: 16px;
-            padding: 12px 16px;
+            margin: 12px 16px;
+            padding: 10px 14px;
             border-radius: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
         .logout-btn {
             background: #ef4444;
             color: white;
             border: none;
-            padding: 6px 14px;
+            padding: 5px 12px;
             border-radius: 30px;
             cursor: pointer;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
         }
 
-        /* ========== বটম ন্যাভিগেশন ========== */
+        /* বটম ন্যাভিগেশন - সেন্টারিং ঠিক */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -243,64 +259,52 @@
             right: 0;
             max-width: 500px;
             margin: 0 auto;
-            background: rgba(255,255,255,0.96);
+            background: rgba(255,255,255,0.98);
             backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-around;
             align-items: center;
-            padding: 8px 16px 20px;
-            border-top: 1px solid #eef2ff;
+            padding: 8px 12px 18px;
+            border-top: 0.5px solid #eef2ff;
         }
-
         .nav-item {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-decoration: none;
             color: #94a3b8;
-            font-size: 0.7rem;
-            gap: 4px;
+            font-size: 0.65rem;
+            gap: 3px;
             transition: 0.2s;
         }
-
         .nav-item i {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
-
         .nav-item.active {
             color: #3b82f6;
         }
-
         .add-btn {
             background: linear-gradient(135deg, #3b82f6, #8b5cf6);
             color: white !important;
-            padding: 8px 18px;
+            padding: 5px 14px;
             border-radius: 40px;
-            margin-top: -12px;
-            box-shadow: 0 4px 12px rgba(59,130,246,0.4);
+            margin-top: -10px;
+            box-shadow: 0 2px 8px rgba(59,130,246,0.3);
         }
-
         .add-btn i {
-            font-size: 1rem !important;
-        }
-
-        /* রেসপন্সিভ */
-        @media (max-width: 450px) {
-            .card i { font-size: 1.2rem; }
-            .card span { font-size: 0.65rem; }
-            .hero h1 { font-size: 1.3rem; }
+            font-size: 0.9rem !important;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- হেডার -->
+        <!-- হেডার (প্রিমিয়াম কালার) -->
         <div class="header">
             <div class="logo">🚀 FutureHub</div>
             <span class="balance" id="balanceDisplay">💰 0</span>
         </div>
 
-        <!-- হিরো + এড ব্যানার স্পেস -->
+        <!-- হিরো + এড ব্যানার -->
         <div class="hero">
             <h1>Earn, Learn & Grow<br>Your Future</h1>
             <p>Jobs, Freelance, Marketplace, AI & More — All in One!</p>
@@ -311,46 +315,58 @@
             <div id="loggedInView" style="display: none;">
                 <button class="btn-primary" id="exploreBtn">Explore Now →</button>
             </div>
-            <!-- এড ব্যানার স্পেস (ভবিষ্যতে কোম্পানির এড বসবে) -->
+            <!-- এড ব্যানার স্পেস (চিকন, স্পেস সহ) -->
             <div class="ad-banner" id="adBanner">
                 <span><i class="fas fa-ad"></i> আপনার বিজ্ঞাপন এখানে — যোগাযোগ করুন</span>
             </div>
         </div>
 
-        <!-- নোটিস বার -->
+        <!-- নোটিস বার (চিকন) -->
         <div class="notice-bar">
             <i class="fas fa-info-circle"></i>
-            <div class="notice-text">🎉 Welcome to FutureHub! New users get 100 points! 🎉</div>
-            <button class="notice-btn" id="noticeBtn">View All</button>
+            <div class="notice-text" id="noticeText">🎉 Welcome to FutureHub! New users get 100 points!</div>
+            <button class="notice-btn" id="noticeBtn">View</button>
         </div>
 
-        <!-- সার্ভিস কার্ড ৪ কলাম -->
+        <!-- সার্ভিস কার্ড -->
         <div class="section-title">
             <h2>Services</h2>
             <a href="#" id="allServicesLink">View All <i class="fas fa-angle-right"></i></a>
         </div>
         <div class="grid-4col">
-            <div class="card" data-service="Earn"><i class="fas fa-coins"></i><span>Earn</span><small>Center</small></div>
-            <div class="card" data-service="Learn"><i class="fas fa-graduation-cap"></i><span>Learn</span><small>Center</small></div>
-            <div class="card" data-service="Career"><i class="fas fa-briefcase"></i><span>Career</span><small>Center</small></div>
-            <div class="card" data-service="CV"><i class="fas fa-file-alt"></i><span>CV</span><small>Center</small></div>
-            <div class="card" data-service="Marketplace"><i class="fas fa-store"></i><span>Market</span><small>place</small></div>
-            <div class="card" data-service="Fiverr"><i class="fab fa-fiverr"></i><span>Fiverr</span><small>Work</small></div>
-            <div class="card" data-service="Matrimony"><i class="fas fa-heart"></i><span>Matri</span><small>mony</small></div>
-            <div class="card" data-service="AI"><i class="fas fa-robot"></i><span>AI</span><small>Center</small></div>
-            <div class="card" data-service="Account"><i class="fas fa-user"></i><span>My</span><small>Account</small></div>
-            <div class="card" data-service="Investment"><i class="fas fa-chart-line"></i><span>Invest</span><small>ment</small></div>
-            <div class="card" data-service="Community"><i class="fas fa-users"></i><span>Commu</span><small>nity</small></div>
-            <div class="card" data-service="More"><i class="fas fa-ellipsis-h"></i><span>More</span><small>Stuff</small></div>
+            <div class="card"><i class="fas fa-coins"></i><span>Earn</span><small>Center</small></div>
+            <div class="card"><i class="fas fa-graduation-cap"></i><span>Learn</span><small>Center</small></div>
+            <div class="card"><i class="fas fa-briefcase"></i><span>Career</span><small>Center</small></div>
+            <div class="card"><i class="fas fa-file-alt"></i><span>CV</span><small>Center</small></div>
+            <div class="card"><i class="fas fa-store"></i><span>Market</span><small>place</small></div>
+            <div class="card"><i class="fab fa-fiverr"></i><span>Fiverr</span><small>Work</small></div>
+            <div class="card"><i class="fas fa-heart"></i><span>Matri</span><small>mony</small></div>
+            <div class="card"><i class="fas fa-robot"></i><span>AI</span><small>Center</small></div>
+            <div class="card"><i class="fas fa-user"></i><span>My</span><small>Account</small></div>
+            <div class="card"><i class="fas fa-chart-line"></i><span>Invest</span><small>ment</small></div>
+            <div class="card"><i class="fas fa-users"></i><span>Commu</span><small>nity</small></div>
+            <div class="card"><i class="fas fa-ellipsis-h"></i><span>More</span><small>Stuff</small></div>
         </div>
 
-        <!-- স্ট্যাটাস কার্ড (লগইন করলে দেখাবে) -->
+        <!-- স্ট্যাটিস্টিকস কার্ড -->
+        <div class="section-title">
+            <h2>Platform Stats</h2>
+        </div>
+        <div class="stats-scroll">
+            <div class="stat-card"><span class="num">125k+</span><span class="label">Total Users</span></div>
+            <div class="stat-card"><span class="num">1.2k</span><span class="label">Active Jobs</span></div>
+            <div class="stat-card"><span class="num">850+</span><span class="label">Freelancers</span></div>
+            <div class="stat-card"><span class="num">3.4k</span><span class="label">Products</span></div>
+            <div class="stat-card"><span class="num">120+</span><span class="label">Courses</span></div>
+        </div>
+
+        <!-- স্ট্যাটাস কার্ড (লগইন করলে) -->
         <div class="status-card" id="statusCard" style="display: none;">
             <span>👋 Welcome, <span id="userName"></span>!</span>
             <button class="logout-btn" id="logoutBtn">Logout</button>
         </div>
 
-        <!-- বটম ন্যাভিগেশন -->
+        <!-- বটম ন্যাভ -->
         <div class="bottom-nav">
             <a href="index.html" class="nav-item active"><i class="fas fa-home"></i><span>Home</span></a>
             <a href="#" class="nav-item" id="jobsNav"><i class="fas fa-briefcase"></i><span>Jobs</span></a>
@@ -361,12 +377,10 @@
     </div>
 
     <script>
-        // Supabase ক্লায়েন্ট (auth.js না থাকলেও কাজ করবে)
         const SUPABASE_URL = 'https://pvuiqfimcwjiijwklbll.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_fQECCsxmVFT008GceAD8GA_SzeXobm0';
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        // চেক ইউজার ফাংশন
         async function checkUser() {
             const { data: { user } } = await supabase.auth.getUser();
             if (user) {
@@ -380,13 +394,11 @@
             return null;
         }
 
-        // লগআউট
         async function logout() {
             await supabase.auth.signOut();
             window.location.reload();
         }
 
-        // UI আপডেট
         async function loadUserData() {
             const userData = await checkUser();
             if (userData && userData.user) {
@@ -401,26 +413,24 @@
 
         loadUserData();
 
-        // ইভেন্ট লিসেনার
+        // ইভেন্ট হ্যান্ডলার
         document.getElementById('logoutBtn')?.addEventListener('click', logout);
-        document.getElementById('exploreBtn')?.addEventListener('click', () => alert('🚀 সব সেবা শীঘ্রই চালু হবে!'));
-        document.getElementById('noticeBtn')?.addEventListener('click', () => alert('📢 নোটিস: নতুন জব পোস্ট হয়েছে, পেমেন্ট মেইনটেন্যান্স ২৫ মে'));
-        document.getElementById('adBanner')?.addEventListener('click', () => alert('📢 আপনার বিজ্ঞাপন এখানে বসাতে চাইলে যোগাযোগ করুন: ads@futurehub.com'));
-        document.getElementById('allServicesLink')?.addEventListener('click', (e) => { e.preventDefault(); alert('✨ ১২টি সার্ভিস: Earn, Learn, Career, CV, Marketplace, Fiverr, Matrimony, AI, Account, Investment, Community, More'); });
+        document.getElementById('exploreBtn')?.addEventListener('click', () => alert('🚀 FutureHub এ স্বাগতম! সব সেবা শীঘ্রই চালু হবে।'));
+        document.getElementById('noticeBtn')?.addEventListener('click', () => alert('📢 নোটিস: নতুন জব পোস্ট হয়েছে! পেমেন্ট মেইনটেন্যান্স ২৫ মে।'));
+        document.getElementById('adBanner')?.addEventListener('click', () => alert('📢 আপনার বিজ্ঞাপন এখানে বসাতে যোগাযোগ করুন: ads@futurehub.com'));
+        document.getElementById('allServicesLink')?.addEventListener('click', (e) => { e.preventDefault(); alert('✨ ১২টি সার্ভিস শীঘ্রই চালু হবে!'); });
         
-        // কার্ড ক্লিক
         document.querySelectorAll('.card').forEach(card => {
             card.addEventListener('click', () => {
-                const service = card.getAttribute('data-service') || card.querySelector('span')?.innerText;
+                const service = card.querySelector('span')?.innerText || 'Service';
                 alert(`📱 ${service} সেকশন শীঘ্রই চালু হবে!`);
             });
         });
 
-        // বটম ন্যাভ ক্লিক
-        document.getElementById('jobsNav')?.addEventListener('click', (e) => { e.preventDefault(); alert('💼 জব সেকশন শীঘ্রই আসছে!'); });
-        document.getElementById('addPostNav')?.addEventListener('click', (e) => { e.preventDefault(); alert('📝 নতুন পোস্ট যোগ করুন (জব/প্রোডাক্ট/সার্ভিস)'); });
-        document.getElementById('messagesNav')?.addEventListener('click', (e) => { e.preventDefault(); alert('💬 মেসেজ সিস্টেম শীঘ্রই চালু হবে'); });
-        document.getElementById('profileNav')?.addEventListener('click', (e) => { e.preventDefault(); alert('👤 আপনার প্রোফাইল পেইজ শীঘ্রই আসছে'); });
+        document.getElementById('jobsNav')?.addEventListener('click', (e) => { e.preventDefault(); alert('💼 জব সেকশন আসছে!'); });
+        document.getElementById('addPostNav')?.addEventListener('click', (e) => { e.preventDefault(); alert('📝 নতুন পোস্ট যোগ করুন'); });
+        document.getElementById('messagesNav')?.addEventListener('click', (e) => { e.preventDefault(); alert('💬 মেসেজ সিস্টেম আসছে'); });
+        document.getElementById('profileNav')?.addEventListener('click', (e) => { e.preventDefault(); alert('👤 প্রোফাইল পেইজ আসছে'); });
     </script>
 </body>
 </html>
