@@ -22,13 +22,16 @@
             max-width: 350px;
             width: 100%;
             text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
         }
+        h2 { margin-bottom: 20px; color: #333; }
         input {
             width: 90%;
             padding: 12px;
             margin: 10px 0;
             border: 1px solid #ddd;
             border-radius: 30px;
+            font-size: 16px;
         }
         button {
             background: linear-gradient(135deg, #667eea, #764ba2);
@@ -39,9 +42,10 @@
             width: 100%;
             font-size: 16px;
             cursor: pointer;
+            margin-top: 10px;
         }
-        .error { color: red; }
-        a { color: #667eea; }
+        .error { color: red; font-size: 14px; margin-top: 10px; }
+        a { color: #667eea; text-decoration: none; }
     </style>
 </head>
 <body>
@@ -49,25 +53,39 @@
         <h2>🔐 Login to FutureHub</h2>
         <input type="email" id="email" placeholder="Email">
         <input type="password" id="password" placeholder="Password">
-        <button onclick="login()">Login</button>
-        <p id="error" class="error"></p>
+        <button id="loginBtn">Login</button>
+        <div id="error" class="error"></div>
         <p>No account? <a href="register.html">Register</a></p>
     </div>
+
     <script>
         const SUPABASE_URL = 'https://pvuiqfimcwjiijwklbll.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_fQECCsxmVFT008GceAD8GA_SzeXobm0';
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        async function login() {
+        document.getElementById('loginBtn').addEventListener('click', async function() {
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-            const { error } = await supabase.auth.signInWithPassword({ email, password });
-            if(error) {
-                document.getElementById('error').innerText = error.message;
+            const errorDiv = document.getElementById('error');
+
+            if (!email || !password) {
+                errorDiv.innerText = '❌ ইমেইল এবং পাসওয়ার্ড দিন';
+                return;
+            }
+
+            errorDiv.innerText = '⏳ লগইন হচ্ছে...';
+
+            const { data, error } = await supabase.auth.signInWithPassword({
+                email: email,
+                password: password
+            });
+
+            if (error) {
+                errorDiv.innerText = '❌ ' + error.message;
             } else {
                 window.location.href = 'index.html';
             }
-        }
+        });
     </script>
 </body>
 </html>
