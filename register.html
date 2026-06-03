@@ -1,83 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Register - FutureHub</title>
+    <title>Test</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:Arial,sans-serif;background:linear-gradient(135deg,#667eea,#764ba2);min-height:100vh;display:flex;justify-content:center;align-items:center;padding:20px}
-        .card{background:white;border-radius:30px;padding:30px;max-width:380px;width:100%;box-shadow:0 20px 40px rgba(0,0,0,0.2)}
-        h2{text-align:center;margin-bottom:20px;color:#333}
-        input{width:100%;padding:12px;margin:8px 0;border:1px solid #ddd;border-radius:30px;font-size:16px}
-        button{width:100%;padding:12px;background:linear-gradient(135deg,#667eea,#764ba2);color:white;border:none;border-radius:30px;font-size:16px;cursor:pointer;margin-top:10px}
-        .error{color:red;text-align:center;margin-top:10px;font-size:14px}
-        .success{color:green;text-align:center;margin-top:10px;font-size:14px}
-        .info{color:blue;text-align:center;margin-top:10px;font-size:14px}
-        a{color:#667eea;text-decoration:none}
-        .link{text-align:center;margin-top:15px}
-    </style>
 </head>
 <body>
-    <div class="card">
-        <h2>📝 Create Account</h2>
-        <input type="text" id="fullName" placeholder="Full Name">
-        <input type="email" id="email" placeholder="Email">
-        <input type="tel" id="mobile" placeholder="Mobile Number">
-        <input type="password" id="password" placeholder="Password (min 6)">
-        <button id="registerBtn">Register</button>
-        <div id="message"></div>
-        <div class="link">Already have account? <a href="login.html">Login</a></div>
-    </div>
-
-    <script>
-        // সঠিক Supabase URL এবং Anon Key
-        const SUPABASE_URL = 'https://pvuiqfimcwjiijwklbll.supabase.co';
-        const SUPABASE_ANON_KEY = 'sb_publishable_fQECCsxmVFT008GceAD8GA_SzeXobm0';
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-        document.getElementById('registerBtn').onclick = async function() {
-            const fullName = document.getElementById('fullName').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const mobile = document.getElementById('mobile').value.trim();
-            const password = document.getElementById('password').value;
-            const msgDiv = document.getElementById('message');
-
-            msgDiv.innerHTML = '<div class="info">⏳ Processing...</div>';
-
-            if (!fullName || !email || !mobile || !password) {
-                msgDiv.innerHTML = '<div class="error">❌ All fields required</div>';
-                return;
-            }
-            if (password.length < 6) {
-                msgDiv.innerHTML = '<div class="error">❌ Password must be at least 6 characters</div>';
-                return;
-            }
-
-            try {
-                const { data, error } = await supabase.auth.signUp({
-                    email: email,
-                    password: password,
-                    options: {
-                        data: {
-                            full_name: fullName,
-                            mobile: mobile
-                        }
-                    }
-                });
-
-                if (error) {
-                    msgDiv.innerHTML = '<div class="error">❌ ' + error.message + '</div>';
-                } else {
-                    msgDiv.innerHTML = '<div class="success">✅ Verification email sent! Check your inbox.</div>';
-                    setTimeout(() => {
-                        window.location.href = 'login.html';
-                    }, 4000);
-                }
-            } catch(err) {
-                msgDiv.innerHTML = '<div class="error">❌ ' + err.message + '</div>';
-            }
-        };
-    </script>
+    <h1>Test Page</h1>
+    <button onclick="alert('Button clicked!')">Click Me</button>
 </body>
 </html>
