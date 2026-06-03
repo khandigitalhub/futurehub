@@ -4,77 +4,75 @@
     <title>Register - FutureHub</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        body{font-family:Arial;background:#667eea;padding:20px}
+        .card{background:white;border-radius:20px;padding:25px;max-width:350px;margin:auto}
+        input{width:100%;padding:10px;margin:8px 0;border-radius:30px;border:1px solid #ddd}
+        button{width:100%;padding:10px;background:#667eea;color:white;border:none;border-radius:30px;cursor:pointer}
+        .msg{margin-top:15px;padding:10px;border-radius:10px}
+        .error{background:#fee;color:red}
+        .success{background:#efe;color:green}
+    </style>
 </head>
-<body style="font-family: Arial; background: linear-gradient(135deg,#667eea,#764ba2); padding: 20px;">
-    <div style="background: white; border-radius: 30px; padding: 30px; max-width: 380px; margin: auto;">
-        <h2 style="text-align: center;">📝 Create Account</h2>
-        
-        <input type="text" id="fullName" placeholder="Full Name" style="width: 100%; padding: 12px; margin: 8px 0; border-radius: 30px; border: 1px solid #ddd;">
-        <input type="email" id="email" placeholder="Email" style="width: 100%; padding: 12px; margin: 8px 0; border-radius: 30px; border: 1px solid #ddd;">
-        <input type="tel" id="mobile" placeholder="Mobile Number" style="width: 100%; padding: 12px; margin: 8px 0; border-radius: 30px; border: 1px solid #ddd;">
-        <input type="password" id="password" placeholder="Password (min 6)" style="width: 100%; padding: 12px; margin: 8px 0; border-radius: 30px; border: 1px solid #ddd;">
-        
-        <button id="registerBtn" style="width: 100%; padding: 12px; background: linear-gradient(135deg,#667eea,#764ba2); color: white; border: none; border-radius: 30px; font-size: 16px; cursor: pointer; margin-top: 10px;">Register</button>
-        
-        <div id="message" style="margin-top: 15px; padding: 10px; border-radius: 10px; text-align: center;"></div>
-        
-        <p style="text-align: center; margin-top: 15px;">Already have account? <a href="login.html" style="color: #667eea;">Login</a></p>
+<body>
+    <div class="card">
+        <h2>Register</h2>
+        <input type="text" id="fullName" placeholder="Full Name">
+        <input type="email" id="email" placeholder="Email">
+        <input type="tel" id="mobile" placeholder="Mobile">
+        <input type="password" id="password" placeholder="Password">
+        <button id="btn">Create Account</button>
+        <div id="msg" class="msg"></div>
+        <p><a href="login.html">Login</a></p>
     </div>
 
     <script>
-        const SUPABASE_URL = 'https://pvuiqfimcwjiijwklbll.supabase.co';
-        const SUPABASE_ANON_KEY = 'sb_publishable_fQECCsxmVFT008GceAD8GA_SzeXobm0';
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        // প্রথম টেস্ট: পেজ লোড হলে alert
+        alert('Page loaded successfully!');
 
-        document.getElementById('registerBtn').onclick = async function() {
-            const fullName = document.getElementById('fullName').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const mobile = document.getElementById('mobile').value.trim();
-            const password = document.getElementById('password').value;
-            const msgDiv = document.getElementById('message');
+        // দ্বিতীয় টেস্ট: বাটন ক্লিক করলে alert
+        const btn = document.getElementById('btn');
+        
+        btn.onclick = function() {
+            alert('Button clicked! Now registering...');
+            
+            // এখানে রেজিস্ট্রেশন কোড
+            const full = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const mobile = document.getElementById('mobile').value;
+            const pass = document.getElementById('password').value;
+            const msg = document.getElementById('msg');
 
-            // Start message
-            msgDiv.innerHTML = '<span style="color:blue;">⏳ Processing...</span>';
-            msgDiv.style.background = "#eef";
-
-            // Validation
-            if (!fullName || !email || !mobile || !password) {
-                msgDiv.innerHTML = '<span style="color:red;">❌ All fields required</span>';
-                msgDiv.style.background = "#fee";
+            if (!full || !email || !mobile || !pass) {
+                msg.innerHTML = '<div class="error">❌ All fields required</div>';
                 return;
             }
-            if (password.length < 6) {
-                msgDiv.innerHTML = '<span style="color:red;">❌ Password must be 6+ characters</span>';
-                msgDiv.style.background = "#fee";
+            if (pass.length < 6) {
+                msg.innerHTML = '<div class="error">❌ Password min 6 chars</div>';
                 return;
             }
 
-            try {
-                const { data, error } = await supabase.auth.signUp({
-                    email: email,
-                    password: password,
-                    options: {
-                        data: {
-                            full_name: fullName,
-                            mobile: mobile
-                        }
-                    }
-                });
+            msg.innerHTML = '<div class="info">⏳ Registering...</div>';
+            
+            const supabase = window.supabase.createClient(
+                'https://pvuiqfimcwjiijwklbll.supabase.co',
+                'sb_publishable_fQECCsxmVFT008GceAD8GA_SzeXobm0'
+            );
 
-                if (error) {
-                    msgDiv.innerHTML = '<span style="color:red;">❌ ' + error.message + '</span>';
-                    msgDiv.style.background = "#fee";
+            supabase.auth.signUp({
+                email: email,
+                password: pass,
+                options: { data: { full_name: full, mobile: mobile } }
+            }).then(result => {
+                if (result.error) {
+                    msg.innerHTML = '<div class="error">❌ ' + result.error.message + '</div>';
                 } else {
-                    msgDiv.innerHTML = '<span style="color:green;">✅ Verification email sent! Check your inbox.</span>';
-                    msgDiv.style.background = "#efe";
-                    setTimeout(() => {
-                        window.location.href = 'login.html';
-                    }, 4000);
+                    msg.innerHTML = '<div class="success">✅ Verification email sent!</div>';
+                    setTimeout(() => { window.location.href = 'login.html'; }, 3000);
                 }
-            } catch(err) {
-                msgDiv.innerHTML = '<span style="color:red;">❌ ' + err.message + '</span>';
-                msgDiv.style.background = "#fee";
-            }
+            }).catch(err => {
+                msg.innerHTML = '<div class="error">❌ ' + err.message + '</div>';
+            });
         };
     </script>
 </body>
