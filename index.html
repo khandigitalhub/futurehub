@@ -28,89 +28,94 @@
             box-shadow: 0 0 20px rgba(0,0,0,0.05);
         }
 
-        /* ========== HEADER ========== */
+        /* ========== হেডার (চিকন, প্রিমিয়াম) ========== */
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 16px;
-            background: linear-gradient(135deg, #1e1b4b, #3b82f6);
+            padding: 10px 16px;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
             position: sticky;
             top: 0;
             z-index: 100;
         }
-
         .logo {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: white;
             letter-spacing: 0.5px;
         }
-
+        .logo i {
+            margin-right: 4px;
+            color: #38bdf8;
+        }
         .balance {
-            background: rgba(255,255,255,0.2);
-            padding: 5px 12px;
+            background: rgba(56, 189, 248, 0.2);
+            padding: 4px 10px;
             border-radius: 30px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 600;
-            color: white;
+            color: #38bdf8;
         }
 
-        /* ========== HERO SECTION ========== */
+        /* ========== হিরো + এড ব্যানার (স্পেস সহ) ========== */
         .hero {
-            background: linear-gradient(135deg, #1e1b4b, #3b82f6);
-            padding: 24px 20px;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            padding: 20px 16px 24px;
             color: white;
         }
-
         .hero h1 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-bottom: 6px;
             font-weight: 700;
         }
-
         .hero p {
-            font-size: 0.75rem;
-            opacity: 0.85;
-            margin-bottom: 16px;
+            font-size: 0.7rem;
+            opacity: 0.8;
+            margin-bottom: 14px;
         }
-
         .btn-primary {
             background: white;
-            color: #3b82f6;
+            color: #0f172a;
             border: none;
-            padding: 8px 18px;
+            padding: 7px 16px;
             border-radius: 30px;
             font-weight: 600;
             cursor: pointer;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
         }
-
         .btn-outline {
             background: transparent;
             border: 1px solid white;
             color: white;
-            padding: 7px 14px;
+            padding: 6px 12px;
             border-radius: 30px;
             cursor: pointer;
             margin-left: 8px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
         }
 
         /* এড ব্যানার - চিকন, চারপাশে স্পেস */
         .ad-banner {
-            margin-top: 16px;
-            background: rgba(255,255,255,0.12);
-            border-radius: 12px;
-            padding: 10px;
+            margin-top: 20px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 14px;
+            padding: 8px;
             text-align: center;
             backdrop-filter: blur(4px);
             cursor: pointer;
             transition: 0.2s;
-            border: 0.5px solid rgba(255,255,255,0.2);
+            border: 0.5px solid rgba(255,255,255,0.15);
         }
-        .ad-banner span {
-            font-size: 0.7rem;
+        .ad-banner img {
+            width: 100%;
+            border-radius: 10px;
+            max-height: 60px;
+            object-fit: cover;
+        }
+        .ad-placeholder {
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.5);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -121,16 +126,16 @@
         .notice-bar {
             background: #fef3c7;
             margin: 12px 16px;
-            padding: 8px 12px;
+            padding: 6px 12px;
             border-radius: 30px;
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
         }
         .notice-bar i {
             color: #d97706;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
         }
         .notice-text {
             flex: 1;
@@ -144,7 +149,7 @@
             border: none;
             color: #d97706;
             font-weight: 500;
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             cursor: pointer;
         }
 
@@ -156,17 +161,17 @@
             padding: 14px 16px 6px;
         }
         .section-title h2 {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             color: #1e293b;
         }
         .section-title a {
             color: #3b82f6;
             text-decoration: none;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
         }
 
-        /* 4-কলাম গ্রিড - ছোট বাটন */
+        /* 4-কলাম গ্রিড - রঙিন বাটন */
         .grid-4col {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -184,11 +189,23 @@
         }
         .card:active {
             transform: scale(0.95);
-            background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
         }
+        /* প্রতিটি কার্ডের আলাদা রঙ */
+        .card:nth-child(1) i { color: #3b82f6; }
+        .card:nth-child(2) i { color: #8b5cf6; }
+        .card:nth-child(3) i { color: #06b6d4; }
+        .card:nth-child(4) i { color: #10b981; }
+        .card:nth-child(5) i { color: #f59e0b; }
+        .card:nth-child(6) i { color: #ef4444; }
+        .card:nth-child(7) i { color: #ec4899; }
+        .card:nth-child(8) i { color: #6366f1; }
+        .card:nth-child(9) i { color: #14b8a6; }
+        .card:nth-child(10) i { color: #f97316; }
+        .card:nth-child(11) i { color: #a855f7; }
+        .card:nth-child(12) i { color: #64748b; }
+        
         .card i {
             font-size: 1.2rem;
-            color: #3b82f6;
             display: block;
             margin-bottom: 4px;
         }
@@ -203,7 +220,7 @@
             color: #64748b;
         }
 
-        /* স্ট্যাটিস্টিকস কার্ড - হরাইজন্টাল স্ক্রোল */
+        /* স্ট্যাটিস্টিকস কার্ড - রঙিন */
         .stats-scroll {
             display: flex;
             gap: 10px;
@@ -218,7 +235,7 @@
             text-align: center;
             min-width: 85px;
             border: 0.5px solid #eef2ff;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
         .stat-card .num {
             font-weight: 700;
@@ -235,7 +252,7 @@
         .status-card {
             background: #f1f5f9;
             margin: 12px 16px;
-            padding: 10px 14px;
+            padding: 8px 14px;
             border-radius: 20px;
             display: flex;
             justify-content: space-between;
@@ -245,13 +262,13 @@
             background: #ef4444;
             color: white;
             border: none;
-            padding: 5px 12px;
+            padding: 4px 10px;
             border-radius: 30px;
             cursor: pointer;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
         }
 
-        /* বটম ন্যাভিগেশন - সেন্টারিং ঠিক */
+        /* বটম ন্যাভ */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -264,7 +281,7 @@
             display: flex;
             justify-content: space-around;
             align-items: center;
-            padding: 8px 12px 18px;
+            padding: 6px 12px 16px;
             border-top: 0.5px solid #eef2ff;
         }
         .nav-item {
@@ -273,12 +290,12 @@
             align-items: center;
             text-decoration: none;
             color: #94a3b8;
-            font-size: 0.65rem;
-            gap: 3px;
+            font-size: 0.6rem;
+            gap: 2px;
             transition: 0.2s;
         }
         .nav-item i {
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
         .nav-item.active {
             color: #3b82f6;
@@ -286,25 +303,25 @@
         .add-btn {
             background: linear-gradient(135deg, #3b82f6, #8b5cf6);
             color: white !important;
-            padding: 5px 14px;
+            padding: 4px 12px;
             border-radius: 40px;
-            margin-top: -10px;
-            box-shadow: 0 2px 8px rgba(59,130,246,0.3);
+            margin-top: -8px;
+            box-shadow: 0 2px 6px rgba(59,130,246,0.3);
         }
         .add-btn i {
-            font-size: 0.9rem !important;
+            font-size: 0.8rem !important;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- হেডার (প্রিমিয়াম কালার) -->
+        <!-- হেডার (চিকন, প্রিমিয়াম) -->
         <div class="header">
-            <div class="logo">🚀 FutureHub</div>
+            <div class="logo"><i class="fas fa-rocket"></i> FutureHub</div>
             <span class="balance" id="balanceDisplay">💰 0</span>
         </div>
 
-        <!-- হিরো + এড ব্যানার -->
+        <!-- হিরো + এড ব্যানার (স্পেস সহ) -->
         <div class="hero">
             <h1>Earn, Learn & Grow<br>Your Future</h1>
             <p>Jobs, Freelance, Marketplace, AI & More — All in One!</p>
@@ -315,20 +332,22 @@
             <div id="loggedInView" style="display: none;">
                 <button class="btn-primary" id="exploreBtn">Explore Now →</button>
             </div>
-            <!-- এড ব্যানার স্পেস (চিকন, স্পেস সহ) -->
+            <!-- এড ব্যানার - বিজ্ঞাপনের লেখা নেই, শুধু ব্যানার স্পেস -->
             <div class="ad-banner" id="adBanner">
-                <span><i class="fas fa-ad"></i> আপনার বিজ্ঞাপন এখানে — যোগাযোগ করুন</span>
+                <div class="ad-placeholder">
+                    <i class="fas fa-image"></i> Banner Space
+                </div>
             </div>
         </div>
 
-        <!-- নোটিস বার (চিকন) -->
+        <!-- নোটিস বার -->
         <div class="notice-bar">
             <i class="fas fa-info-circle"></i>
-            <div class="notice-text" id="noticeText">🎉 Welcome to FutureHub! New users get 100 points!</div>
+            <div class="notice-text">🎉 Welcome to FutureHub! New users get 100 points!</div>
             <button class="notice-btn" id="noticeBtn">View</button>
         </div>
 
-        <!-- সার্ভিস কার্ড -->
+        <!-- সার্ভিস কার্ড (রঙিন) -->
         <div class="section-title">
             <h2>Services</h2>
             <a href="#" id="allServicesLink">View All <i class="fas fa-angle-right"></i></a>
@@ -348,19 +367,16 @@
             <div class="card"><i class="fas fa-ellipsis-h"></i><span>More</span><small>Stuff</small></div>
         </div>
 
-        <!-- স্ট্যাটিস্টিকস কার্ড -->
+        <!-- স্ট্যাটিস্টিকস (রঙিন) -->
         <div class="section-title">
             <h2>Platform Stats</h2>
+            <a href="#" id="statsManageLink">Manage</a>
         </div>
-        <div class="stats-scroll">
-            <div class="stat-card"><span class="num">125k+</span><span class="label">Total Users</span></div>
-            <div class="stat-card"><span class="num">1.2k</span><span class="label">Active Jobs</span></div>
-            <div class="stat-card"><span class="num">850+</span><span class="label">Freelancers</span></div>
-            <div class="stat-card"><span class="num">3.4k</span><span class="label">Products</span></div>
-            <div class="stat-card"><span class="num">120+</span><span class="label">Courses</span></div>
+        <div class="stats-scroll" id="statsContainer">
+            <!-- স্ট্যাটিসর্বার ডাটা JavaScript থেকে লোড হবে -->
         </div>
 
-        <!-- স্ট্যাটাস কার্ড (লগইন করলে) -->
+        <!-- স্ট্যাটাস কার্ড -->
         <div class="status-card" id="statusCard" style="display: none;">
             <span>👋 Welcome, <span id="userName"></span>!</span>
             <button class="logout-btn" id="logoutBtn">Logout</button>
@@ -370,8 +386,8 @@
         <div class="bottom-nav">
             <a href="index.html" class="nav-item active"><i class="fas fa-home"></i><span>Home</span></a>
             <a href="#" class="nav-item" id="jobsNav"><i class="fas fa-briefcase"></i><span>Jobs</span></a>
-            <a href="#" class="nav-item add-btn" id="addPostNav"><i class="fas fa-plus-circle"></i><span>Add Post</span></a>
-            <a href="#" class="nav-item" id="messagesNav"><i class="fas fa-comment"></i><span>Messages</span></a>
+            <a href="#" class="nav-item add-btn" id="addPostNav"><i class="fas fa-plus-circle"></i><span>Post</span></a>
+            <a href="#" class="nav-item" id="messagesNav"><i class="fas fa-comment"></i><span>Chat</span></a>
             <a href="#" class="nav-item" id="profileNav"><i class="fas fa-user"></i><span>Profile</span></a>
         </div>
     </div>
@@ -381,6 +397,28 @@
         const SUPABASE_ANON_KEY = 'sb_publishable_fQECCsxmVFT008GceAD8GA_SzeXobm0';
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
+        // স্ট্যাটিস্টিকস লোড (এডমিন প্যানেল থেকে কন্ট্রোল হবে)
+        async function loadStats() {
+            // বর্তমানে ডিফল্ট ডাটা, এডমিন প্যানেল থেকে আপডেট হবে
+            const stats = [
+                { num: '125k+', label: 'Total Users' },
+                { num: '1.2k', label: 'Active Jobs' },
+                { num: '850+', label: 'Freelancers' },
+                { num: '3.4k', label: 'Products' },
+                { num: '120+', label: 'Courses' }
+            ];
+            
+            const container = document.getElementById('statsContainer');
+            container.innerHTML = stats.map(s => `
+                <div class="stat-card">
+                    <span class="num">${s.num}</span>
+                    <span class="label">${s.label}</span>
+                </div>
+            `).join('');
+        }
+        loadStats();
+
+        // ইউজার চেক
         async function checkUser() {
             const { data: { user } } = await supabase.auth.getUser();
             if (user) {
@@ -410,20 +448,36 @@
                 document.getElementById('balanceDisplay').innerHTML = `💰 ${userData.userData?.balance || 100}`;
             }
         }
-
         loadUserData();
 
         // ইভেন্ট হ্যান্ডলার
         document.getElementById('logoutBtn')?.addEventListener('click', logout);
-        document.getElementById('exploreBtn')?.addEventListener('click', () => alert('🚀 FutureHub এ স্বাগতম! সব সেবা শীঘ্রই চালু হবে।'));
-        document.getElementById('noticeBtn')?.addEventListener('click', () => alert('📢 নোটিস: নতুন জব পোস্ট হয়েছে! পেমেন্ট মেইনটেন্যান্স ২৫ মে।'));
-        document.getElementById('adBanner')?.addEventListener('click', () => alert('📢 আপনার বিজ্ঞাপন এখানে বসাতে যোগাযোগ করুন: ads@futurehub.com'));
-        document.getElementById('allServicesLink')?.addEventListener('click', (e) => { e.preventDefault(); alert('✨ ১২টি সার্ভিস শীঘ্রই চালু হবে!'); });
+        document.getElementById('exploreBtn')?.addEventListener('click', () => alert('🚀 FutureHub এ স্বাগতম!'));
+        document.getElementById('noticeBtn')?.addEventListener('click', () => alert('📢 নোটিস: নতুন জব পোস্ট হয়েছে!'));
+        
+        // এড ব্যানার ক্লিক করলে More বাটনে যাবে (বিজ্ঞাপন দিতে)
+        document.getElementById('adBanner')?.addEventListener('click', () => {
+            alert('📢 বিজ্ঞাপন দিতে More সেকশনে যান।');
+        });
+        
+        document.getElementById('allServicesLink')?.addEventListener('click', (e) => { 
+            e.preventDefault(); 
+            alert('✨ ১২টি সার্ভিস শীঘ্রই চালু হবে!'); 
+        });
+        
+        document.getElementById('statsManageLink')?.addEventListener('click', (e) => { 
+            e.preventDefault(); 
+            alert('📊 স্ট্যাটিস্টিকস এডমিন প্যানেল থেকে কন্ট্রোল হবে।'); 
+        });
         
         document.querySelectorAll('.card').forEach(card => {
             card.addEventListener('click', () => {
                 const service = card.querySelector('span')?.innerText || 'Service';
-                alert(`📱 ${service} সেকশন শীঘ্রই চালু হবে!`);
+                if(service === 'More') {
+                    alert('📢 এখানে বিজ্ঞাপন দেওয়ার অপশন থাকবে।');
+                } else {
+                    alert(`📱 ${service} সেকশন শীঘ্রই চালু হবে!`);
+                }
             });
         });
 
