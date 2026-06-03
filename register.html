@@ -22,13 +22,16 @@
             max-width: 350px;
             width: 100%;
             text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
         }
+        h2 { margin-bottom: 20px; color: #333; }
         input {
             width: 90%;
             padding: 12px;
             margin: 10px 0;
             border: 1px solid #ddd;
             border-radius: 30px;
+            font-size: 16px;
         }
         button {
             background: linear-gradient(135deg, #667eea, #764ba2);
@@ -39,10 +42,11 @@
             width: 100%;
             font-size: 16px;
             cursor: pointer;
+            margin-top: 10px;
         }
-        .error { color: red; }
-        .success { color: green; }
-        a { color: #667eea; }
+        .error { color: red; font-size: 14px; margin-top: 10px; }
+        .success { color: green; font-size: 14px; margin-top: 10px; }
+        a { color: #667eea; text-decoration: none; }
     </style>
 </head>
 <body>
@@ -52,16 +56,18 @@
         <input type="email" id="email" placeholder="Email">
         <input type="tel" id="mobile" placeholder="Mobile Number">
         <input type="password" id="password" placeholder="Password (min 6)">
-        <button onclick="register()">Register</button>
-        <p id="message"></p>
+        <button id="registerBtn">Register</button>
+        <div id="message"></div>
         <p>Already have account? <a href="login.html">Login</a></p>
     </div>
+
     <script>
+        // Supabase configuration
         const SUPABASE_URL = 'https://pvuiqfimcwjiijwklbll.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_fQECCsxmVFT008GceAD8GA_SzeXobm0';
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        async function register() {
+        document.getElementById('registerBtn').addEventListener('click', async function() {
             const fullName = document.getElementById('fullName').value;
             const email = document.getElementById('email').value;
             const mobile = document.getElementById('mobile').value;
@@ -69,13 +75,15 @@
             const msgDiv = document.getElementById('message');
 
             if (!fullName || !email || !mobile || !password) {
-                msgDiv.innerHTML = '<span class="error">All fields required</span>';
+                msgDiv.innerHTML = '<div class="error">❌ সব ঘর পূরণ করুন</div>';
                 return;
             }
             if (password.length < 6) {
-                msgDiv.innerHTML = '<span class="error">Password must be 6+ characters</span>';
+                msgDiv.innerHTML = '<div class="error">❌ পাসওয়ার্ড কমপক্ষে ৬ অক্ষর</div>';
                 return;
             }
+
+            msgDiv.innerHTML = '<div style="color:blue;">⏳ রেজিস্টার হচ্ছে...</div>';
 
             const { data, error } = await supabase.auth.signUp({
                 email: email,
@@ -89,14 +97,14 @@
             });
 
             if (error) {
-                msgDiv.innerHTML = '<span class="error">' + error.message + '</span>';
+                msgDiv.innerHTML = '<div class="error">❌ ' + error.message + '</div>';
             } else {
-                msgDiv.innerHTML = '<span class="success">✅ Verification email sent! Check your inbox.</span>';
+                msgDiv.innerHTML = '<div class="success">✅ ভেরিফিকেশন ইমেইল পাঠানো হয়েছে! আপনার ইনবক্স চেক করুন।</div>';
                 setTimeout(() => {
                     window.location.href = 'login.html';
-                }, 3000);
+                }, 4000);
             }
-        }
+        });
     </script>
 </body>
 </html>
