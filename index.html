@@ -2,10 +2,10 @@
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>FutureHub - Earn • Learn • Grow</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -15,51 +15,48 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background: #F8FAFC;
+            font-family: 'Inter', sans-serif;
+            background: #f5f7fb;
         }
 
-        .app-container {
-            max-width: 430px;
+        /* মূল কন্টেইনার - মোবাইলের জন্য পারফেক্ট */
+        .app {
+            max-width: 450px;
             margin: 0 auto;
-            background: #F8FAFC;
+            background: #ffffff;
             min-height: 100vh;
-            padding-bottom: 75px;
-            position: relative;
+            width: 100%;
+            overflow-x: hidden;
         }
 
-        /* ========== HEADER (Premium - Like Reference) ========== */
+        /* ========== হেডার ========== */
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 20px;
+            padding: 14px 18px;
             background: white;
-            border-bottom: 1px solid #E2E8F0;
+            border-bottom: 1px solid #eef2ff;
         }
-        .logo-section {
-            display: flex;
-            flex-direction: column;
-        }
-        .logo {
-            font-size: 1.4rem;
+        .logo-area h1 {
+            font-size: 1.3rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #2563EB, #3B82F6);
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
-        .logo-sub {
-            font-size: 0.65rem;
-            color: #64748B;
+        .logo-area p {
+            font-size: 0.6rem;
+            color: #64748b;
             letter-spacing: 0.5px;
         }
-        .header-actions {
+        .header-icons {
             display: flex;
-            align-items: center;
             gap: 16px;
+            align-items: center;
         }
-        .icon-btn {
+        .header-icons button {
             background: none;
             border: none;
             font-size: 1.2rem;
@@ -71,17 +68,16 @@
             position: absolute;
             top: -4px;
             right: -6px;
-            background: #EF4444;
+            background: #ef4444;
             color: white;
-            font-size: 0.6rem;
+            font-size: 0.55rem;
             padding: 2px 5px;
             border-radius: 20px;
-            font-weight: 600;
         }
         .avatar {
             width: 32px;
             height: 32px;
-            background: linear-gradient(135deg, #2563EB, #3B82F6);
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -91,517 +87,435 @@
             cursor: pointer;
         }
 
-        /* ========== HERO BANNER (Premium Gradient + Mockup) ========== */
+        /* ========== হিরো ব্যানার ========== */
         .hero {
-            background: linear-gradient(135deg, #1E3A8A, #3B82F6);
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
             margin: 16px 16px 0;
-            border-radius: 28px;
-            padding: 24px 20px;
+            border-radius: 24px;
+            padding: 22px 18px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 20px 35px -10px rgba(37,99,235,0.3);
-        }
-        .hero-content {
-            position: relative;
-            z-index: 2;
         }
         .hero-badge {
             background: rgba(255,255,255,0.2);
             display: inline-block;
-            padding: 4px 12px;
+            padding: 3px 12px;
             border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: 500;
+            font-size: 0.65rem;
             color: white;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
-        .hero h1 {
-            font-size: 1.6rem;
+        .hero h2 {
+            font-size: 1.4rem;
             font-weight: 700;
             color: white;
-            line-height: 1.2;
-            margin-bottom: 8px;
+            line-height: 1.3;
         }
         .hero p {
             font-size: 0.7rem;
             color: rgba(255,255,255,0.8);
-            margin-bottom: 20px;
+            margin: 8px 0 16px;
         }
         .explore-btn {
             background: white;
-            color: #2563EB;
+            color: #2563eb;
             border: none;
-            padding: 10px 24px;
+            padding: 8px 20px;
             border-radius: 40px;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
-        .mockup-group {
+        .floating-icons {
             position: absolute;
-            right: -20px;
-            bottom: -20px;
+            right: 10px;
+            bottom: 10px;
             display: flex;
             gap: 8px;
-            opacity: 0.7;
         }
-        .mockup {
+        .floating-icons span {
             background: rgba(255,255,255,0.15);
-            border-radius: 12px;
-            padding: 8px;
-            width: 60px;
-            height: 70px;
-            backdrop-filter: blur(4px);
-        }
-        .floating-icon {
-            position: absolute;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50%;
             width: 35px;
             height: 35px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             backdrop-filter: blur(4px);
         }
-        .icon-1 { top: 20px; right: 60px; }
-        .icon-2 { bottom: 40px; left: 20px; }
-        .icon-3 { top: 50px; left: 30px; }
-        .slider-dots {
-            display: flex;
-            justify-content: center;
-            gap: 6px;
-            margin-top: 16px;
-        }
-        .dot {
-            width: 6px;
-            height: 6px;
-            background: rgba(255,255,255,0.5);
-            border-radius: 50%;
-        }
-        .dot.active {
-            width: 20px;
-            background: white;
-            border-radius: 10px;
-        }
 
-        /* ========== NOTICE BAR (Like Reference) ========== */
-        .notice-bar {
-            background: #FEF3C7;
+        /* ========== নোটিস বার ========== */
+        .notice {
+            background: #fef9c3;
             margin: 16px;
-            padding: 10px 16px;
-            border-radius: 50px;
+            padding: 10px 14px;
+            border-radius: 40px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
-        .notice-icon {
-            color: #D97706;
-            font-size: 1rem;
+        .notice i {
+            color: #d97706;
         }
-        .notice-label {
-            color: #D97706;
-            font-weight: 600;
+        .notice span {
             font-size: 0.7rem;
-        }
-        .notice-text {
+            color: #92400e;
             flex: 1;
-            font-size: 0.7rem;
-            color: #92400E;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
         }
-        .notice-btn {
+        .notice button {
             background: none;
             border: none;
-            color: #D97706;
-            font-weight: 500;
+            color: #d97706;
             font-size: 0.7rem;
+            font-weight: 500;
             cursor: pointer;
         }
 
-        /* ========== SERVICE BUTTONS (8 buttons, 4x2 grid) ========== */
-        .section-header {
+        /* ========== সেকশন টাইটেল ========== */
+        .section-title {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            padding: 16px 16px 8px;
+            padding: 20px 16px 10px;
         }
-        .section-header h2 {
-            font-size: 1.1rem;
+        .section-title h3 {
+            font-size: 1rem;
             font-weight: 600;
-            color: #1E293B;
+            color: #1e293b;
         }
-        .section-header a {
-            color: #2563EB;
+        .section-title a {
+            color: #2563eb;
             text-decoration: none;
             font-size: 0.7rem;
-            font-weight: 500;
         }
-        .grid-4x2 {
+
+        /* ========== ৮টি সার্ভিস বাটন (4x2 গ্রিড) ========== */
+        .services-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 12px;
             padding: 0 16px;
         }
         .service-card {
-            background: white;
-            border-radius: 20px;
-            padding: 14px 8px;
+            background: #f8fafc;
+            border-radius: 18px;
+            padding: 12px 6px;
             text-align: center;
             cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            border: 1px solid #F1F5F9;
+            transition: 0.2s;
         }
         .service-card:active {
             transform: scale(0.96);
-            box-shadow: 0 4px 12px rgba(37,99,235,0.1);
         }
         .service-card i {
-            font-size: 1.6rem;
-            margin-bottom: 8px;
+            font-size: 1.5rem;
+            margin-bottom: 6px;
             display: block;
         }
         .service-card span {
             font-size: 0.7rem;
             font-weight: 600;
-            color: #1E293B;
+            color: #1e293b;
         }
         .service-card small {
             font-size: 0.55rem;
-            color: #64748B;
+            color: #64748b;
         }
-        /* আইকনের রং */
-        .service-card:nth-child(1) i { color: #3B82F6; }
-        .service-card:nth-child(2) i { color: #8B5CF6; }
-        .service-card:nth-child(3) i { color: #10B981; }
-        .service-card:nth-child(4) i { color: #F59E0B; }
-        .service-card:nth-child(5) i { color: #EC4899; }
-        .service-card:nth-child(6) i { color: #06B6D4; }
-        .service-card:nth-child(7) i { color: #EF4444; }
-        .service-card:nth-child(8) i { color: #64748B; }
+        /* রঙিন আইকন */
+        .service-card:nth-child(1) i { color: #3b82f6; }
+        .service-card:nth-child(2) i { color: #8b5cf6; }
+        .service-card:nth-child(3) i { color: #10b981; }
+        .service-card:nth-child(4) i { color: #f59e0b; }
+        .service-card:nth-child(5) i { color: #ec4899; }
+        .service-card:nth-child(6) i { color: #06b6d4; }
+        .service-card:nth-child(7) i { color: #ef4444; }
+        .service-card:nth-child(8) i { color: #64748b; }
 
-        /* ========== STATISTICS SECTION ========== */
-        .stats-row {
+        /* ========== স্ট্যাটিস্টিকস (হরাইজন্টাল স্ক্রোল) ========== */
+        .stats-scroll {
             display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding: 0 16px;
+            scrollbar-width: thin;
+        }
+        .stat-card {
             background: white;
-            margin: 16px;
-            border-radius: 24px;
-            padding: 16px 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            border: 1px solid #F1F5F9;
-        }
-        .stat-item {
-            flex: 1;
+            border: 1px solid #eef2ff;
+            border-radius: 20px;
+            padding: 12px 20px;
             text-align: center;
-            border-right: 1px solid #E2E8F0;
+            min-width: 90px;
         }
-        .stat-item:last-child {
-            border-right: none;
-        }
-        .stat-item i {
-            font-size: 1rem;
-            color: #3B82F6;
-            margin-bottom: 4px;
-        }
-        .stat-number {
+        .stat-card .num {
             font-size: 1rem;
             font-weight: 700;
-            color: #1E293B;
+            color: #2563eb;
         }
-        .stat-label {
+        .stat-card .label {
             font-size: 0.6rem;
-            color: #64748B;
+            color: #64748b;
         }
 
-        /* ========== FEATURED SECTIONS ========== */
+        /* ========== ফিচার্ড কার্ড (হরাইজন্টাল) ========== */
         .featured-scroll {
             display: flex;
             gap: 14px;
             overflow-x: auto;
-            padding: 0 16px 16px;
+            padding: 0 16px;
             scrollbar-width: thin;
         }
         .featured-card {
-            min-width: 220px;
-            background: white;
-            border-radius: 20px;
+            min-width: 200px;
+            background: #f8fafc;
+            border-radius: 18px;
             padding: 14px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            border: 1px solid #F1F5F9;
         }
-        .featured-title {
-            font-size: 0.8rem;
+        .featured-card h4 {
+            font-size: 0.85rem;
             font-weight: 600;
-            margin-bottom: 4px;
         }
-        .featured-sub {
+        .featured-card p {
             font-size: 0.65rem;
-            color: #64748B;
-            margin-bottom: 8px;
+            color: #64748b;
+            margin: 4px 0;
         }
-        .featured-price {
-            font-size: 0.75rem;
+        .featured-card .price {
             font-weight: 700;
-            color: #2563EB;
+            color: #2563eb;
+            font-size: 0.75rem;
         }
         .free-badge {
-            background: #E0E7FF;
-            color: #4338CA;
+            background: #dbeafe;
+            color: #2563eb;
             padding: 2px 8px;
             border-radius: 20px;
             font-size: 0.6rem;
         }
 
-        /* ========== STATUS CARD ========== */
+        /* ========== স্ট্যাটাস কার্ড ========== */
         .status-card {
-            background: white;
+            background: #f1f5f9;
             margin: 16px;
             padding: 12px 16px;
             border-radius: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
         .logout-btn {
-            background: #EF4444;
+            background: #ef4444;
             color: white;
             border: none;
-            padding: 6px 14px;
+            padding: 5px 12px;
             border-radius: 30px;
             cursor: pointer;
             font-size: 0.7rem;
         }
 
-        /* ========== BOTTOM NAVIGATION ========== */
+        /* ========== বটম ন্যাভ ========== */
         .bottom-nav {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            max-width: 430px;
+            max-width: 450px;
             margin: 0 auto;
             background: white;
             display: flex;
             justify-content: space-around;
             align-items: center;
-            padding: 8px 20px 20px;
-            border-top: 1px solid #E2E8F0;
-            box-shadow: 0 -4px 12px rgba(0,0,0,0.04);
+            padding: 8px 16px 20px;
+            border-top: 1px solid #eef2ff;
         }
         .nav-item {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-decoration: none;
-            color: #94A3B8;
+            color: #94a3b8;
             font-size: 0.6rem;
-            gap: 4px;
-            transition: 0.2s;
+            gap: 3px;
         }
         .nav-item i {
             font-size: 1.2rem;
         }
         .nav-item.active {
-            color: #2563EB;
+            color: #2563eb;
         }
         .add-btn {
-            background: linear-gradient(135deg, #2563EB, #3B82F6);
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
             color: white !important;
-            padding: 10px 20px;
-            border-radius: 50px;
-            margin-top: -18px;
-            box-shadow: 0 6px 14px rgba(37,99,235,0.4);
+            padding: 8px 18px;
+            border-radius: 40px;
+            margin-top: -14px;
+            box-shadow: 0 4px 12px rgba(37,99,235,0.4);
         }
         .add-btn i {
-            font-size: 1rem !important;
-        }
-        .add-btn span {
-            font-size: 0.65rem;
+            font-size: 0.9rem !important;
         }
     </style>
 </head>
 <body>
-    <div class="app-container">
-        <!-- HEADER (Like Reference) -->
-        <div class="header">
-            <div class="logo-section">
-                <div class="logo">FutureHub</div>
-                <div class="logo-sub">Earn • Learn • Grow</div>
-            </div>
-            <div class="header-actions">
-                <button class="icon-btn" id="supportBtn"><i class="far fa-question-circle"></i></button>
-                <button class="icon-btn" id="notifBtn"><i class="far fa-bell"></i><span class="badge">3</span></button>
-                <div class="avatar" id="avatarBtn">F</div>
-            </div>
+<div class="app">
+    <!-- হেডার -->
+    <div class="header">
+        <div class="logo-area">
+            <h1>FutureHub</h1>
+            <p>Earn • Learn • Grow</p>
         </div>
-
-        <!-- HERO BANNER (Premium Gradient + Mockup) -->
-        <div class="hero">
-            <div class="hero-content">
-                <div class="hero-badge">All-in-One Platform</div>
-                <h1>Earn, Learn & Grow<br>Your Future</h1>
-                <p>Jobs, Freelance, Education, Marketplace, Matrimony & AI Assistance — All in One Place!</p>
-                <button class="explore-btn" id="exploreBtn">Explore Now <i class="fas fa-arrow-right"></i></button>
-            </div>
-            <div class="floating-icon icon-1"><i class="fas fa-briefcase"></i></div>
-            <div class="floating-icon icon-2"><i class="fas fa-graduation-cap"></i></div>
-            <div class="floating-icon icon-3"><i class="fas fa-chart-line"></i></div>
-            <div class="mockup-group">
-                <div class="mockup"><i class="fas fa-mobile-alt"></i></div>
-                <div class="mockup"><i class="fas fa-laptop"></i></div>
-            </div>
-            <div class="slider-dots">
-                <div class="dot active"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-            </div>
-        </div>
-
-        <!-- NOTICE BAR -->
-        <div class="notice-bar">
-            <i class="fas fa-info-circle notice-icon"></i>
-            <span class="notice-label">Notice:</span>
-            <div class="notice-text">🎉 Welcome to FutureHub! Explore endless opportunities. New users get 100 points!</div>
-            <button class="notice-btn" id="noticeBtn">View All</button>
-        </div>
-
-        <!-- SERVICES (8 Buttons - 4x2 Grid) -->
-        <div class="section-header">
-            <h2>Services</h2>
-            <a href="#" id="allServicesLink">See All <i class="fas fa-angle-right"></i></a>
-        </div>
-        <div class="grid-4x2">
-            <div class="service-card" data-service="Earn Center"><i class="fas fa-coins"></i><span>Earn Center</span></div>
-            <div class="service-card" data-service="Learn Center"><i class="fas fa-graduation-cap"></i><span>Learn Center</span></div>
-            <div class="service-card" data-service="Career Center"><i class="fas fa-briefcase"></i><span>Career Center</span></div>
-            <div class="service-card" data-service="Marketplace"><i class="fas fa-store"></i><span>Marketplace</span></div>
-            <div class="service-card" data-service="Fiverr Work"><i class="fab fa-fiverr"></i><span>Fiverr Work</span></div>
-            <div class="service-card" data-service="Matrimony"><i class="fas fa-heart"></i><span>Matrimony</span></div>
-            <div class="service-card" data-service="AI Center"><i class="fas fa-robot"></i><span>AI Center</span></div>
-            <div class="service-card" data-service="More"><i class="fas fa-ellipsis-h"></i><span>More</span></div>
-        </div>
-
-        <!-- STATISTICS SECTION -->
-        <div class="section-header">
-            <h2>Platform Stats</h2>
-        </div>
-        <div class="stats-row">
-            <div class="stat-item"><i class="fas fa-users"></i><div class="stat-number">125k+</div><div class="stat-label">Total Users</div></div>
-            <div class="stat-item"><i class="fas fa-briefcase"></i><div class="stat-number">1.2k</div><div class="stat-label">Active Jobs</div></div>
-            <div class="stat-item"><i class="fas fa-laptop-code"></i><div class="stat-number">850+</div><div class="stat-label">Freelancers</div></div>
-            <div class="stat-item"><i class="fas fa-box"></i><div class="stat-number">3.4k</div><div class="stat-label">Products</div></div>
-            <div class="stat-item"><i class="fas fa-book"></i><div class="stat-number">120+</div><div class="stat-label">Courses</div></div>
-        </div>
-
-        <!-- FEATURED JOBS -->
-        <div class="section-header">
-            <h2>Featured Jobs</h2>
-            <a href="#" id="seeAllJobs">See All <i class="fas fa-angle-right"></i></a>
-        </div>
-        <div class="featured-scroll">
-            <div class="featured-card"><div class="featured-title">UI/UX Designer</div><div class="featured-sub">Remote • Beginner</div><div class="featured-price">$500 - $800</div><span class="free-badge">Free</span></div>
-            <div class="featured-card"><div class="featured-title">Full Stack Developer</div><div class="featured-sub">Dhaka • Beginner</div><div class="featured-price">$600 - $1200</div><span class="free-badge">Free</span></div>
-            <div class="featured-card"><div class="featured-title">Digital Marketer</div><div class="featured-sub">Remote • Beginner</div><div class="featured-price">$300 - $600</div><span class="free-badge">Free</span></div>
-        </div>
-
-        <!-- POPULAR PRODUCTS -->
-        <div class="section-header">
-            <h2>Popular Products</h2>
-            <a href="#">See All <i class="fas fa-angle-right"></i></a>
-        </div>
-        <div class="featured-scroll">
-            <div class="featured-card"><div class="featured-title">Sony WH-1000XM5</div><div class="featured-sub">Headphones</div><div class="featured-price">$349</div></div>
-            <div class="featured-card"><div class="featured-title">Web Dev Bootcamp</div><div class="featured-sub">Course</div><div class="featured-price">Free</div></div>
-            <div class="featured-card"><div class="featured-title">Digital Marketing</div><div class="featured-sub">Full Course</div><div class="featured-price">Free</div></div>
-        </div>
-
-        <!-- FREE LEARNING -->
-        <div class="section-header">
-            <h2>Free Learning</h2>
-            <a href="#">See All <i class="fas fa-angle-right"></i></a>
-        </div>
-        <div class="featured-scroll">
-            <div class="featured-card"><div class="featured-title">Bangla to English</div><div class="featured-sub">Speaking Course</div><div class="featured-price">Free</div></div>
-            <div class="featured-card"><div class="featured-title">Web Development</div><div class="featured-sub">Bootcamp</div><div class="featured-price">Free</div></div>
-        </div>
-
-        <!-- STATUS CARD (Shows when logged in) -->
-        <div class="status-card" id="statusCard" style="display: none;">
-            <span>👋 Welcome, <span id="userName"></span>! | 💰 <span id="balanceDisplay">0</span> pts</span>
-            <button class="logout-btn" id="logoutBtn">Logout</button>
-        </div>
-
-        <!-- BOTTOM NAVIGATION -->
-        <div class="bottom-nav">
-            <a href="#" class="nav-item active"><i class="fas fa-home"></i><span>Home</span></a>
-            <a href="#" class="nav-item" id="jobsNav"><i class="fas fa-briefcase"></i><span>Jobs</span></a>
-            <a href="#" class="nav-item add-btn" id="addPostNav"><i class="fas fa-plus-circle"></i><span>Add Post</span></a>
-            <a href="#" class="nav-item" id="messagesNav"><i class="fas fa-comment-dots"></i><span>Messages</span></a>
-            <a href="#" class="nav-item" id="profileNav"><i class="fas fa-user"></i><span>Profile</span></a>
+        <div class="header-icons">
+            <button id="supportBtn"><i class="far fa-question-circle"></i></button>
+            <button id="notifBtn"><i class="far fa-bell"></i><span class="badge">3</span></button>
+            <div class="avatar" id="avatarBtn">F</div>
         </div>
     </div>
 
-    <script>
-        // Supabase Config
-        const SUPABASE_URL = 'https://pvuiqfimcwjiijwklbll.supabase.co';
-        const SUPABASE_ANON_KEY = 'sb_publishable_fQECCsxmVFT008GceAD8GA_SzeXobm0';
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    <!-- হিরো ব্যানার -->
+    <div class="hero">
+        <div class="hero-badge">All-in-One Platform</div>
+        <h2>Earn, Learn & Grow<br>Your Future</h2>
+        <p>Jobs, Freelance, Education, Marketplace, Matrimony & AI Assistance — All in One Place!</p>
+        <button class="explore-btn" id="exploreBtn">Explore Now →</button>
+        <div class="floating-icons">
+            <span><i class="fas fa-briefcase"></i></span>
+            <span><i class="fas fa-graduation-cap"></i></span>
+            <span><i class="fas fa-chart-line"></i></span>
+        </div>
+    </div>
 
-        // Auth Functions
-        async function checkUser() {
-            const { data: { user } } = await supabase.auth.getUser();
-            if (user) {
-                const { data: userData } = await supabase.from('users').select('*').eq('id', user.id).single();
-                return { user, userData };
-            }
-            return null;
+    <!-- নোটিস বার -->
+    <div class="notice">
+        <i class="fas fa-info-circle"></i>
+        <span>🎉 Welcome to FutureHub! Explore endless opportunities. New users get 100 points!</span>
+        <button id="noticeBtn">View All</button>
+    </div>
+
+    <!-- সার্ভিস বাটন (৮টি) -->
+    <div class="section-title">
+        <h3>Services</h3>
+        <a href="#" id="allServicesLink">See All <i class="fas fa-angle-right"></i></a>
+    </div>
+    <div class="services-grid">
+        <div class="service-card"><i class="fas fa-coins"></i><span>Earn Center</span><small>Earn</small></div>
+        <div class="service-card"><i class="fas fa-graduation-cap"></i><span>Learn Center</span><small>Learn</small></div>
+        <div class="service-card"><i class="fas fa-briefcase"></i><span>Career Center</span><small>Jobs</small></div>
+        <div class="service-card"><i class="fas fa-store"></i><span>Marketplace</span><small>Shop</small></div>
+        <div class="service-card"><i class="fab fa-fiverr"></i><span>Fiverr Work</span><small>Freelance</small></div>
+        <div class="service-card"><i class="fas fa-heart"></i><span>Matrimony</span><small>Match</small></div>
+        <div class="service-card"><i class="fas fa-robot"></i><span>AI Center</span><small>Tools</small></div>
+        <div class="service-card"><i class="fas fa-ellipsis-h"></i><span>More</span><small>Extras</small></div>
+    </div>
+
+    <!-- প্লাটফর্ম স্ট্যাটিস্টিকস -->
+    <div class="section-title">
+        <h3>Platform Stats</h3>
+    </div>
+    <div class="stats-scroll">
+        <div class="stat-card"><div class="num">125k+</div><div class="label">Total Users</div></div>
+        <div class="stat-card"><div class="num">8.2k+</div><div class="label">Active Jobs</div></div>
+        <div class="stat-card"><div class="num">15k+</div><div class="label">Freelancers</div></div>
+        <div class="stat-card"><div class="num">3.4k</div><div class="label">Products</div></div>
+        <div class="stat-card"><div class="num">120+</div><div class="label">Courses</div></div>
+    </div>
+
+    <!-- ফিচার্ড জবস -->
+    <div class="section-title">
+        <h3>Featured Jobs</h3>
+        <a href="#" id="seeAllJobs">See All <i class="fas fa-angle-right"></i></a>
+    </div>
+    <div class="featured-scroll">
+        <div class="featured-card"><h4>UI/UX Designer</h4><p>Remote • Beginner</p><span class="price">$500 - $800</span><div><span class="free-badge">Free</span></div></div>
+        <div class="featured-card"><h4>Full Stack Developer</h4><p>Dhaka • Beginner</p><span class="price">$600 - $1200</span><div><span class="free-badge">Free</span></div></div>
+        <div class="featured-card"><h4>Digital Marketer</h4><p>Remote • Beginner</p><span class="price">$300 - $600</span><div><span class="free-badge">Free</span></div></div>
+    </div>
+
+    <!-- পপুলার প্রোডাক্টস -->
+    <div class="section-title">
+        <h3>Popular Products</h3>
+        <a href="#">See All <i class="fas fa-angle-right"></i></a>
+    </div>
+    <div class="featured-scroll">
+        <div class="featured-card"><h4>iPhone 15 Pro Max</h4><p>Apple</p><span class="price">$1,099</span></div>
+        <div class="featured-card"><h4>MacBook Air M2</h4><p>Apple</p><span class="price">$1,249</span></div>
+        <div class="featured-card"><h4>Sony WH-1000XM5</h4><p>Sony</p><span class="price">$349</span></div>
+    </div>
+
+    <!-- ফ্রি লার্নিং -->
+    <div class="section-title">
+        <h3>Free Learning</h3>
+        <a href="#">See All <i class="fas fa-angle-right"></i></a>
+    </div>
+    <div class="featured-scroll">
+        <div class="featured-card"><h4>Bangla to English Speaking</h4><p>Beginner</p><span class="price">Free</span><div><span class="free-badge">Free</span></div></div>
+        <div class="featured-card"><h4>Digital Marketing Full Course</h4><p>Beginner</p><span class="price">Free</span><div><span class="free-badge">Free</span></div></div>
+        <div class="featured-card"><h4>Web Development Bootcamp</h4><p>Beginner</p><span class="price">Free</span><div><span class="free-badge">Free</span></div></div>
+    </div>
+
+    <!-- স্ট্যাটাস কার্ড (লগইন করলে দেখাবে) -->
+    <div class="status-card" id="statusCard" style="display: none;">
+        <span>👋 Welcome, <span id="userName"></span> | 💰 <span id="balanceDisplay">0</span> pts</span>
+        <button class="logout-btn" id="logoutBtn">Logout</button>
+    </div>
+
+    <!-- বটম ন্যাভ -->
+    <div class="bottom-nav">
+        <a href="#" class="nav-item active"><i class="fas fa-home"></i><span>Home</span></a>
+        <a href="#" class="nav-item" id="jobsNav"><i class="fas fa-briefcase"></i><span>Jobs</span></a>
+        <a href="#" class="nav-item add-btn" id="addPostNav"><i class="fas fa-plus-circle"></i><span>Add Post</span></a>
+        <a href="#" class="nav-item" id="messagesNav"><i class="fas fa-comment-dots"></i><span>Messages</span></a>
+        <a href="#" class="nav-item" id="profileNav"><i class="fas fa-user"></i><span>Profile</span></a>
+    </div>
+</div>
+
+<script>
+    // Supabase Config
+    const SUPABASE_URL = 'https://pvuiqfimcwjiijwklbll.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_fQECCsxmVFT008GceAD8GA_SzeXobm0';
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    async function checkUser() {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (user) {
+            const { data: userData } = await supabase.from('users').select('*').eq('id', user.id).single();
+            return { user, userData };
         }
+        return null;
+    }
 
-        async function logout() {
-            await supabase.auth.signOut();
-            window.location.reload();
+    async function logout() {
+        await supabase.auth.signOut();
+        window.location.reload();
+    }
+
+    async function loadUserData() {
+        const userData = await checkUser();
+        if (userData && userData.user) {
+            document.getElementById('statusCard').style.display = 'flex';
+            const name = userData.userData?.full_name || userData.user.email.split('@')[0];
+            document.getElementById('userName').innerText = name;
+            document.getElementById('balanceDisplay').innerText = userData.userData?.balance || 100;
         }
+    }
+    loadUserData();
 
-        async function loadUserData() {
-            const userData = await checkUser();
-            if (userData && userData.user) {
-                document.getElementById('statusCard').style.display = 'flex';
-                const name = userData.userData?.full_name || userData.user.email.split('@')[0];
-                document.getElementById('userName').innerText = name;
-                document.getElementById('balanceDisplay').innerText = userData.userData?.balance || 100;
-            }
-        }
-        loadUserData();
-
-        // Event Listeners
-        document.getElementById('logoutBtn')?.addEventListener('click', logout);
-        document.getElementById('exploreBtn')?.addEventListener('click', () => alert('🚀 Explore FutureHub!'));
-        document.getElementById('noticeBtn')?.addEventListener('click', () => alert('📢 New job posted: UI Designer | Payment maintenance 25 May'));
-        document.getElementById('supportBtn')?.addEventListener('click', () => alert('📞 Support: help@futurehub.com'));
-        document.getElementById('notifBtn')?.addEventListener('click', () => alert('🔔 You have 3 new notifications'));
-        document.getElementById('avatarBtn')?.addEventListener('click', () => window.location.href = login.html);
-        document.getElementById('allServicesLink')?.addEventListener('click', (e) => { e.preventDefault(); alert('✨ 8 services available'); });
-        document.getElementById('seeAllJobs')?.addEventListener('click', (e) => { e.preventDefault(); alert('💼 All jobs coming soon'); });
-        
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.addEventListener('click', () => {
-                const service = card.getAttribute('data-service') || card.querySelector('span')?.innerText;
-                alert(`📱 ${service} section coming soon!`);
-            });
-        });
-
-        document.getElementById('jobsNav')?.addEventListener('click', (e) => { e.preventDefault(); alert('💼 Jobs section coming soon'); });
-        document.getElementById('addPostNav')?.addEventListener('click', (e) => { e.preventDefault(); alert('📝 Add Post feature coming soon'); });
-        document.getElementById('messagesNav')?.addEventListener('click', (e) => { e.preventDefault(); alert('💬 Messages coming soon'); });
-        document.getElementById('profileNav')?.addEventListener('click', (e) => { e.preventDefault(); alert('👤 Profile page coming soon'); });
-    </script>
+    document.getElementById('logoutBtn')?.addEventListener('click', logout);
+    document.getElementById('exploreBtn')?.addEventListener('click', () => alert('🚀 FutureHub Explore'));
+    document.getElementById('noticeBtn')?.addEventListener('click', () => alert('📢 New updates coming'));
+    document.getElementById('supportBtn')?.addEventListener('click', () => alert('📞 Support: help@futurehub.com'));
+    document.getElementById('notifBtn')?.addEventListener('click', () => alert('🔔 3 new notifications'));
+    document.getElementById('avatarBtn')?.addEventListener('click', () => window.location.href = 'login.html');
+    
+    document.getElementById('allServicesLink')?.addEventListener('click', (e) => { e.preventDefault(); alert('✨ 8 services'); });
+    document.getElementById('seeAllJobs')?.addEventListener('click', (e) => { e.preventDefault(); alert('💼 All jobs'); });
+    
+    document.querySelectorAll('.service-card').forEach(card => {
+        card.addEventListener('click', () => alert('📱 Coming soon!'));
+    });
+    document.getElementById('jobsNav')?.addEventListener('click', (e) => { e.preventDefault(); alert('💼 Jobs'); });
+    document.getElementById('addPostNav')?.addEventListener('click', (e) => { e.preventDefault(); alert('📝 Add Post'); });
+    document.getElementById('messagesNav')?.addEventListener('click', (e) => { e.preventDefault(); alert('💬 Messages'); });
+    document.getElementById('profileNav')?.addEventListener('click', (e) => { e.preventDefault(); alert('👤 Profile'); });
+</script>
 </body>
 </html>
