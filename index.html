@@ -1,298 +1,212 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FutureHub - Earn, Learn & Grow</title>
-
-<link rel="stylesheet" href="style.css">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FutureHub - Earn, Learn & Grow</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="auth.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: #f5f7fb;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+            padding-bottom: 70px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px;
+            background: white;
+            border-bottom: 1px solid #eef2ff;
+            position: sticky;
+            top: 0;
+        }
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .balance {
+            background: #f1f5f9;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .hero {
+            background: linear-gradient(135deg, #1e1b4b, #3b82f6);
+            padding: 30px 20px;
+            color: white;
+        }
+        .hero h1 { font-size: 1.6rem; margin-bottom: 10px; }
+        .hero p { font-size: 0.85rem; opacity: 0.9; margin-bottom: 20px; }
+        .btn-primary {
+            background: white;
+            color: #3b82f6;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid white;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 40px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .grid-4col {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            padding: 20px 16px;
+        }
+        .card {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 12px 4px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .card i { font-size: 1.5rem; color: #3b82f6; display: block; margin-bottom: 6px; }
+        .card span { font-size: 0.7rem; font-weight: 500; }
+        .status-card {
+            background: #f1f5f9;
+            margin: 16px;
+            padding: 12px;
+            border-radius: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logout-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 16px 20px;
+            border-top: 1px solid #eef2ff;
+        }
+        .nav-item {
+            text-align: center;
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.7rem;
+        }
+        .nav-item.active { color: #3b82f6; }
+        .nav-item i { font-size: 1.2rem; display: block; }
+        .add-btn {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 40px;
+            margin-top: -8px;
+        }
+    </style>
 </head>
-
 <body>
-
-<!-- HEADER -->
-
-<header class="header">
-
-<div class="logo-area">
-<div class="logo-box">F</div>
-
-<div>
-<h2>FutureHub</h2>
-<span>Earn • Learn • Grow</span>
-</div>
-</div>
-
-<div class="search-box">
-<i class="fa fa-search"></i>
-<input type="text" placeholder="Search jobs, services, people...">
-</div>
-
-<div class="top-icons">
-
-<div class="support">
-<i class="fa-regular fa-comments"></i>
-<span>Support</span>
-</div>
-
-<div class="notify">
-<i class="fa-regular fa-bell"></i>
-<span class="badge">3</span>
-</div>
-
-<div class="profile">
-<img src="https://i.pravatar.cc/150?img=12">
-<div>
-<h4>Hi, User</h4>
-<span>Premium</span>
-</div>
-</div>
-
-</div>
-
-</header>
-
-<!-- HERO -->
-
-<section class="hero">
-
-<div class="hero-content">
-
-<h4>All-in-One Platform</h4>
-
-<h1>
-Earn, Learn & Grow <br>
-Your Future
-</h1>
-
-<p>
-Jobs, Freelance, Education, Marketplace,
-Matrimony & AI Assistance — All in One Place!
-</p>
-
-<a href="#" class="hero-btn">
-Explore Now
-</a>
-
-</div>
-
-<div class="hero-image">
-
-<div class="floating one">🎓</div>
-<div class="floating two">💖</div>
-<div class="floating three">💼</div>
-<div class="floating four">🛒</div>
-
-</div>
-
-</section>
-
-<!-- NOTICE -->
-
-<section class="notice-bar">
-
-<div class="notice-left">
-📢 Notice:
-</div>
-
-<marquee>
-Welcome to FutureHub! Explore endless opportunities. New users get 100 points!
-</marquee>
-
-<a href="#">View All</a>
-
-</section>
-
-<!-- MENU GRID -->
-
-<section class="menu-grid">
-
-<div class="menu-card">
-<div class="icon">💰</div>
-<h3>Earn Center</h3>
-<p>Find ways to earn online</p>
-</div>
-
-<div class="menu-card">
-<div class="icon">📚</div>
-<h3>Learn Center</h3>
-<p>Learn new skills for free</p>
-</div>
-
-<div class="menu-card">
-<div class="icon">💼</div>
-<h3>Career Center</h3>
-<p>Find your dream career</p>
-</div>
-
-<div class="menu-card">
-<div class="icon">📄</div>
-<h3>CV Center</h3>
-<p>Create professional CV</p>
-</div>
-
-<div class="menu-card">
-<div class="icon">🛒</div>
-<h3>Marketplace</h3>
-<p>Buy & sell products</p>
-</div>
-
-<div class="menu-card">
-<div class="icon">🖥️</div>
-<h3>Fiverr Work</h3>
-<p>Freelance opportunities</p>
-</div>
-
-<div class="menu-card">
-<div class="icon">💖</div>
-<h3>Matrimony</h3>
-<p>Find life partner</p>
-</div>
-
-<div class="menu-card">
-<div class="icon">🤖</div>
-<h3>AI Center</h3>
-<p>AI tools & services</p>
-</div>
-
-<div class="menu-card">
-<div class="icon">👤</div>
-<h3>My Account</h3>
-<p>Profile & settings</p>
-</div>
-
-<div class="menu-card">
-<div class="icon">🔳</div>
-<h3>More</h3>
-<p>Explore more features</p>
-</div>
-
-</section>
-
-<!-- STATS -->
-
-<section class="stats">
-
-<div class="stat">
-<h2>125K+</h2>
-<p>Total Users</p>
-</div>
-
-<div class="stat">
-<h2>8,250+</h2>
-<p>Active Jobs</p>
-</div>
-
-<div class="stat">
-<h2>15K+</h2>
-<p>Freelancers</p>
-</div>
-
-<div class="stat">
-<h2>12K+</h2>
-<p>Products</p>
-</div>
-
-<div class="stat">
-<h2>3500+</h2>
-<p>Courses</p>
-</div>
-
-</section>
-
-<!-- FEATURED -->
-
-<section class="cards-section">
-
-<div class="card-box">
-
-<h3>🔥 Featured Jobs</h3>
-
-<ul>
-<li>UI/UX Designer</li>
-<li>Full Stack Developer</li>
-<li>Digital Marketer</li>
-</ul>
-
-</div>
-
-<div class="card-box">
-
-<h3>🛒 Popular Products</h3>
-
-<ul>
-<li>iPhone 15 Pro Max</li>
-<li>MacBook Air M2</li>
-<li>Sony WH-1000XM5</li>
-</ul>
-
-</div>
-
-<div class="card-box">
-
-<h3>📚 Free Learning</h3>
-
-<ul>
-<li>Bangla to English</li>
-<li>Digital Marketing</li>
-<li>Web Development</li>
-</ul>
-
-</div>
-
-</section>
-
-<!-- UPDATES -->
-
-<section class="updates">
-
-<marquee>
-
-Latest Updates • New Job Posted • New Course Added • Payment System Updated • FutureHub Growing Fast
-
-</marquee>
-
-</section>
-
-<!-- BOTTOM NAV -->
-
-<nav class="bottom-nav">
-
-<a href="#">
-<i class="fa fa-home"></i>
-<span>Home</span>
-</a>
-
-<a href="#">
-<i class="fa fa-briefcase"></i>
-<span>Jobs</span>
-</a>
-
-<a href="#">
-<i class="fa fa-plus-circle"></i>
-<span>Add</span>
-</a>
-
-<a href="#">
-<i class="fa fa-comment"></i>
-<span>Messages</span>
-</a>
-
-<a href="#">
-<i class="fa fa-user"></i>
-<span>Profile</span>
-</a>
-
-</nav>
-
-<script src="script.js"></script>
-
+    <div class="container">
+        <div class="header">
+            <div class="logo">🚀 FutureHub</div>
+            <span class="balance" id="balanceDisplay">💰 0</span>
+        </div>
+        <div class="hero">
+            <h1>Earn, Learn & Grow<br>Your Future</h1>
+            <p>Jobs, Freelance, Marketplace, AI & More — All in One!</p>
+            <div id="authButtons">
+                <button class="btn-primary" onclick="window.location.href='login.html'">Login</button>
+                <button class="btn-outline" onclick="window.location.href='register.html'">Register</button>
+            </div>
+            <div id="loggedInView" style="display: none;">
+                <button class="btn-primary" id="exploreBtn">Explore Now →</button>
+            </div>
+        </div>
+        <div class="grid-4col">
+            <div class="card"><i class="fas fa-coins"></i><span>Earn</span></div>
+            <div class="card"><i class="fas fa-graduation-cap"></i><span>Learn</span></div>
+            <div class="card"><i class="fas fa-briefcase"></i><span>Career</span></div>
+            <div class="card"><i class="fas fa-file-alt"></i><span>CV</span></div>
+            <div class="card"><i class="fas fa-store"></i><span>Market</span></div>
+            <div class="card"><i class="fab fa-fiverr"></i><span>Fiverr</span></div>
+            <div class="card"><i class="fas fa-heart"></i><span>Matri</span></div>
+            <div class="card"><i class="fas fa-robot"></i><span>AI</span></div>
+            <div class="card"><i class="fas fa-user"></i><span>Account</span></div>
+            <div class="card"><i class="fas fa-chart-line"></i><span>Invest</span></div>
+            <div class="card"><i class="fas fa-users"></i><span>Community</span></div>
+            <div class="card"><i class="fas fa-ellipsis-h"></i><span>More</span></div>
+        </div>
+        <div class="status-card" id="statusCard" style="display: none;">
+            <span>👋 Welcome, <span id="userName"></span>!</span>
+            <button class="logout-btn" id="logoutBtn">Logout</button>
+        </div>
+    </div>
+    <div class="bottom-nav">
+        <a href="index.html" class="nav-item active"><i class="fas fa-home"></i><span>Home</span></a>
+        <a href="#" class="nav-item"><i class="fas fa-briefcase"></i><span>Jobs</span></a>
+        <a href="#" class="nav-item add-btn"><i class="fas fa-plus-circle"></i><span>Add Post</span></a>
+        <a href="#" class="nav-item"><i class="fas fa-comment"></i><span>Messages</span></a>
+        <a href="#" class="nav-item"><i class="fas fa-user"></i><span>Profile</span></a>
+    </div>
+
+    <script src="https://kit.fontawesome.com/a2e8d2c2c8.js" crossorigin="anonymous"></script>
+    <script>
+        async function loadUserData() {
+            const userData = await checkUser();
+            if (userData && userData.user) {
+                document.getElementById('authButtons').style.display = 'none';
+                document.getElementById('loggedInView').style.display = 'block';
+                document.getElementById('statusCard').style.display = 'flex';
+                document.getElementById('userName').innerText = userData.userData?.full_name || userData.user.email.split('@')[0];
+                document.getElementById('balanceDisplay').innerHTML = `💰 ${userData.userData?.balance || 100}`;
+            }
+        }
+        loadUserData();
+        
+        const logoutBtn = document.getElementById('logoutBtn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', logout);
+        }
+        
+        const exploreBtn = document.getElementById('exploreBtn');
+        if (exploreBtn) {
+            exploreBtn.addEventListener('click', () => {
+                alert('🚀 FutureHub এ স্বাগতম! সব সেবা শীঘ্রই চালু হবে।');
+            });
+        }
+        
+        // কার্ডে ক্লিক করলে
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', () => {
+                alert('📱 এই সেবা শীঘ্রই চালু হবে। লগইন করে থাকুন!');
+            });
+        });
+    </script>
 </body>
 </html>
