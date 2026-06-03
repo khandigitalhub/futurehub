@@ -31,6 +31,7 @@
     </div>
 
     <script>
+        // সঠিক Supabase URL এবং Anon Key
         const SUPABASE_URL = 'https://pvuiqfimcwjiijwklbll.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_fQECCsxmVFT008GceAD8GA_SzeXobm0';
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -42,14 +43,14 @@
             const password = document.getElementById('password').value;
             const msgDiv = document.getElementById('message');
 
-            msgDiv.innerHTML = '<div class="info">⏳ Registering...</div>';
+            msgDiv.innerHTML = '<div class="info">⏳ Processing...</div>';
 
             if (!fullName || !email || !mobile || !password) {
                 msgDiv.innerHTML = '<div class="error">❌ All fields required</div>';
                 return;
             }
             if (password.length < 6) {
-                msgDiv.innerHTML = '<div class="error">❌ Password must be 6+ characters</div>';
+                msgDiv.innerHTML = '<div class="error">❌ Password must be at least 6 characters</div>';
                 return;
             }
 
