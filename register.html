@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register - FutureHub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 350px;
+            width: 100%;
+            text-align: center;
+        }
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            width: 100%;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .error { color: red; }
+        .success { color: green; }
+        a { color: #667eea; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>📝 Create Account</h2>
+        <input type="text" id="fullName" placeholder="Full Name">
+        <input type="email" id="email" placeholder="Email">
+        <input type="tel" id="mobile" placeholder="Mobile Number">
+        <input type="password" id="password" placeholder="Password (min 6)">
+        <button onclick="register()">Register</button>
+        <p id="message"></p>
+        <p>Already have account? <a href="login.html">Login</a></p>
+    </div>
+    <script>
+        const SUPABASE_URL = 'https://pvuiqfimcwjiijwklbll.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_fQECCsxmVFT008GceAD8GA_SzeXobm0';
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        async function register() {
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const mobile = document.getElementById('mobile').value;
+            const password = document.getElementById('password').value;
+            const msgDiv = document.getElementById('message');
+
+            if (!fullName || !email || !mobile || !password) {
+                msgDiv.innerHTML = '<span class="error">All fields required</span>';
+                return;
+            }
+            if (password.length < 6) {
+                msgDiv.innerHTML = '<span class="error">Password must be 6+ characters</span>';
+                return;
+            }
+
+            const { data, error } = await supabase.auth.signUp({
+                email: email,
+                password: password,
+                options: {
+                    data: {
+                        full_name: fullName,
+                        mobile: mobile
+                    }
+                }
+            });
+
+            if (error) {
+                msgDiv.innerHTML = '<span class="error">' + error.message + '</span>';
+            } else {
+                msgDiv.innerHTML = '<span class="success">✅ Verification email sent! Check your inbox.</span>';
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 3000);
+            }
+        }
+    </script>
+</body>
+</html>
